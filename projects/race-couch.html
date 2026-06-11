@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Race Couch · Joel Williams</title>
+  <meta name="description" content="A drivable couch, steered by a game controller.">
+  <link rel="icon" href="../assets/images/favicon.png">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="container">
+      <a class="nav-monogram" href="../index.html">JW</a>
+      <div class="nav-links">
+        <a href="../index.html#work" class="active">work</a>
+        <a href="../about.html">about</a>
+        <a href="../resume.pdf">résumé</a>
+        <a href="../about.html#contact">contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="project-header">
+    <div class="container">
+      <h1 class="project-title">Race Couch</h1>
+      <p class="project-outcome">A drivable couch, steered by a game controller.</p>
+      <p class="project-meta">just for fun · wreck racing, georgia tech · 2023</p>
+    </div>
+  </header>
+
+  <main class="project-body">
+    <div class="container">
+
+      <figure class="project-hero">
+        <img src="../assets/images/race-couch/race-couch-hero.jpg" alt="The welded steel couch chassis on six wheels in the shop, with a PVC steering frame and wiring in place">
+      </figure>
+
+      <section class="project-section">
+        <p>This was my first taste of engineering outside a classroom, back in my early Georgia Tech days before I really knew what I was doing. The premise was as ridiculous as it sounds: a couch you could actually drive. I took on the controls, turning a game controller into a way to pilot a piece of furniture, and the fun lived in the handful of small design problems it took to get there.</p>
+        <p>The first question was what to even drive it with. We went back and forth between a Wii remote and nunchuck, a GameCube controller, and an old arcade-style joystick before landing on a PS4 controller. We also made a deliberate choice to go wireless. Nothing forced us to, but it was cooler and it freed the driver from being tethered to the couch, so we took on the added complexity on purpose.</p>
+      </section>
+
+      <div class="figure-row figure-row--narrow">
+        <figure class="project-figure">
+          <video autoplay muted loop playsinline preload="metadata" poster="../assets/videos/race-couch/race-couch-poster-2.jpg">
+            <source src="../assets/videos/race-couch/race-couch-loop-2.mp4" type="video/mp4">
+          </video>
+          <figcaption class="media-caption">first wireless drives of the bare chassis</figcaption>
+        </figure>
+        <figure class="project-figure">
+          <img src="../assets/images/race-couch/race-couch-2.jpg" alt="Top view of the wired chassis: battery, motor controllers, and cabling routed through the steel frame">
+          <figcaption class="media-caption">the arduino and wiring down in the frame</figcaption>
+        </figure>
+      </div>
+
+      <section class="project-section">
+        <p>With the PS4 controller chosen, its two thumbsticks opened up how to actually drive. The couch ran like a tank, with no steering wheel, just different amounts of power sent to the left and right wheels, so the core problem was mapping a stick's position to the right power split between the two sides. We could have crammed throttle and steering onto one stick, but it felt clumsy, so we used both: the left stick became pure throttle (how fast everything spun) and the right stick handled steering (how that power got divided side to side). That separation is what made the couch genuinely intuitive to drive.</p>
+        <p>Going wireless had one catch. The Arduino lived down in the frame underneath the couch, so the signal would cut out, and for testing we sometimes gave up and ran a wire straight to it.</p>
+      </section>
+
+      <figure class="project-figure">
+        <img src="../assets/images/race-couch/race-couch-1.jpg" alt="CAD model of the couch chassis: a steel frame on six wheels with a plywood seat base">
+        <figcaption class="media-caption">the chassis in cad, tank-drive wheel layout</figcaption>
+      </figure>
+
+      <section class="project-section">
+        <p>I didn't have much formal engineering behind me yet, which was the whole point. It showed me how broad mechanical engineering really is and how many kinds of problems we get to solve, and learning that on something as gloriously dumb as a motorized couch is what made it stick. It is the project that made me want more.</p>
+      </section>
+
+      <figure class="project-figure figure--portrait">
+        <video autoplay muted loop playsinline preload="metadata" poster="../assets/videos/race-couch/race-couch-poster-1.jpg">
+          <source src="../assets/videos/race-couch/race-couch-loop-1.mp4" type="video/mp4">
+        </video>
+        <figcaption class="media-caption">the couch, very much drivable</figcaption>
+      </figure>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span class="footer-copyright">© 2026 joel williams</span>
+      <div class="footer-links">
+        <a href="mailto:jwilliams812@gatech.edu">email</a>
+        <a href="https://www.linkedin.com/in/jwilliams2204/">linkedin</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

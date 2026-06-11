@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joel Williams · Product Design Portfolio</title>
+  <meta name="description" content="Joel Williams is a mechanical engineering student at Georgia Tech who designs, prototypes, and machines considered hardware, from the desk to orbit.">
+  <link rel="icon" href="assets/images/favicon.png">
+  <meta property="og:title" content="Joel Williams · Mechanical Engineering Student Portfolio">
+  <meta property="og:description" content="I design, prototype, and machine considered hardware, from the desk to orbit.">
+  <meta property="og:image" content="assets/images/og.png">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="container">
+      <a class="nav-monogram" href="index.html">JW</a>
+      <div class="nav-links">
+        <a href="index.html#work" class="active">work</a>
+        <a href="about.html">about</a>
+        <a href="resume.pdf">résumé</a>
+        <a href="about.html#contact">contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <div class="hero-intro">
+        <p class="hero-eyebrow">mech-eng / georgia tech · atlanta, ga</p>
+        <h1 class="hero-name">Joel Williams</h1>
+        <hr class="hero-rule">
+        <p class="hero-tagline">I design, prototype, and machine considered hardware, from the desk to orbit.</p>
+      </div>
+      <div class="hero-aside">
+        <div class="headshot"><img src="assets/images/headshot.jpg" alt="Headshot of Joel Williams"></div>
+        <div class="hero-links">
+          <a href="https://www.linkedin.com/in/jwilliams2204/">linkedin ↗</a>
+          <a href="resume.pdf">résumé ↓</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="skills-stripe" aria-label="Skills highlight">
+    <div class="container">
+      <p class="section-label">skills highlight</p>
+      <div class="skills-pills">
+        <span class="pill">SolidWorks</span>
+        <span class="pill">CREO</span>
+        <span class="pill">Windchill</span>
+        <span class="pill">ANSYS</span>
+        <span class="pill">GD&amp;T</span>
+        <span class="pill">DFMA</span>
+        <span class="pill">Machining</span>
+        <span class="pill">Rapid prototyping</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="work" id="work" aria-label="Selected work">
+    <div class="container">
+      <p class="section-label">selected work</p>
+
+      <a class="work-tile work-featured" href="projects/focus-puck.html">
+        <div class="tile-media"><img src="assets/images/focus-puck/focus-puck-3.jpg" alt="3D-printed Focus Puck parts on a workbench: black shell, LED ring, white diffuser, and the Arduino tray stack"></div>
+        <div class="tile-caption">
+          <div>
+            <span class="tile-title">Focus Puck</span>
+            <p class="tile-outcome">A focus timer for my desk, designed and built end to end over a winter break.</p>
+          </div>
+          <span class="tile-tag">product design</span>
+        </div>
+      </a>
+
+      <div class="work-grid">
+        <a class="work-tile" href="projects/tvc-mount.html">
+          <div class="tile-media"><img src="assets/images/tvc-mount/tvc-mount-2.jpg" alt="The 3D-printed TVC mount held in hand, with micro servos and steel ball-socket linkages visible"></div>
+          <div class="tile-caption">
+            <div>
+              <span class="tile-title">TVC Mount</span>
+              <p class="tile-outcome">A ground-up thrust-vector-control-mount design that gave a finless rocket ±20° of steering.</p>
+            </div>
+            <span class="tile-tag">mechatronics</span>
+          </div>
+        </a>
+
+        <a class="work-tile" href="projects/fin-tabs.html">
+          <div class="tile-media"><img src="assets/images/fin-tabs/fin-tabs-1.jpg" alt="CAD closeup of the rocket's aft end showing the fins and the fin-tab actuation assembly inside the body tube"></div>
+          <div class="tile-caption">
+            <div>
+              <span class="tile-title">Fin Tabs Rocket</span>
+              <p class="tile-outcome">Responsible engineer on a full-scale, fin-tab-guided rocket.</p>
+            </div>
+            <span class="tile-tag">systems integration</span>
+          </div>
+        </a>
+
+        <a class="work-tile" href="projects/me2110.html">
+          <div class="tile-media"><img src="assets/images/me2110/me2110-4.jpg" alt="The Hypixel robot in the makerspace with its End Crystal lift arm raised"></div>
+          <div class="tile-caption">
+            <div>
+              <span class="tile-title">ME 2110 Robot</span>
+              <p class="tile-outcome">A scrappy $47 competition robot that climbed to the top 16 of 56 teams.</p>
+            </div>
+            <span class="tile-tag">robotics</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="fun" aria-label="Just for fun">
+    <div class="container">
+      <p class="section-label">just for fun</p>
+      <a class="fun-tile" href="projects/race-couch.html">
+        <div class="tile-media"><img src="assets/videos/race-couch/race-couch-poster-1.jpg" alt="Two people riding the drivable couch across a parking lot at night, steering with a game controller"></div>
+        <div class="tile-caption">
+          <div>
+            <span class="tile-title">Race Couch</span>
+            <p class="tile-outcome">A drivable couch steered by a game controller, the kind of fun, random project that sparks people's joy for engineering.</p>
+          </div>
+          <span class="tile-tag">just for fun</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="experience" aria-label="Experience">
+    <div class="container">
+      <p class="section-label">experience</p>
+      <div class="accordion">
+
+        <!-- NOTE: Blue Origin copy is the NDA-safe softened version. Once Joel's
+             manager confirms the specifics are cleared, swap in the full bullets
+             from CLAUDE.md section 7.5 (reaction control system, Artemis 3 and 4). -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="exp-blue-origin">
+            <span class="accordion-role">Blue Origin · Manufacturing Engineering Intern</span>
+            <span class="accordion-meta">
+              <span class="accordion-dates">2026 to now</span>
+              <svg class="accordion-chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 5.5L8 10.5L13 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+          <div class="accordion-panel" id="exp-blue-origin" hidden>
+            <ul>
+              <li>Designing and validating flight test hardware for a next-generation lunar lander program, modeled in CREO and managed in Windchill.</li>
+              <li>Ran FEA on the hardware I designed to verify its load cases and the structural integrity of the fully integrated system, identifying weak points and where reinforcement was needed.</li>
+              <li>Procured COTS hardware and issued the work orders to get my test hardware assembled.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="exp-valero">
+            <span class="accordion-role">Valero · Reliability Engineering Intern</span>
+            <span class="accordion-meta">
+              <span class="accordion-dates">2025</span>
+              <svg class="accordion-chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 5.5L8 10.5L13 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+          <div class="accordion-panel" id="exp-valero" hidden>
+            <ul>
+              <li>Built operating cost (OC) models for steam turbines and presented conversion cases to reduce OC by 85%.</li>
+              <li>Conducted FMEA on a bad-actor pump; implemented structural fixes raising MTBR over 340% versus the previous baseline.</li>
+              <li>Led access-structure upgrades (catwalk, platform, and walkway installs), improving mechanic safety and decreasing maintenance route times by 50%.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="exp-invention-studio">
+            <span class="accordion-role">Invention Studio · Prototyping Instructor</span>
+            <span class="accordion-meta">
+              <span class="accordion-dates">2023 to now</span>
+              <svg class="accordion-chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 5.5L8 10.5L13 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+          <div class="accordion-panel" id="exp-invention-studio" hidden>
+            <ul>
+              <li>Instruct 30+ general users per week on manufacturing methods, DFM practices, and safe equipment use.</li>
+              <li>Coach prospective prototyping instructors in safe machine operation, SOPs, and teaching methods, achieving a ~90% pass rate for those trained and tested.</li>
+              <li>Operate Tormach and EMCO CNCs to produce precision prototype parts; use Autodesk Fusion to create CAM toolpaths, select tooling, and tune feeds and speeds.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="exp-hytech">
+            <span class="accordion-role">HyTech Racing · Powertrain Design Engineer</span>
+            <span class="accordion-meta">
+              <span class="accordion-dates">2026 to now</span>
+              <svg class="accordion-chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 5.5L8 10.5L13 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+          <div class="accordion-panel" id="exp-hytech" hidden>
+            <ul>
+              <li>Assembled and integrated planetary gearboxes into the vehicle, verifying interference fits.</li>
+              <li>Designed 3D-printed motor cooling jackets and ran flow tests for heat-transfer performance.</li>
+              <li>Built 3D-printed motor test stands and designed test parts in CATIA V6.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="exp-rocket-club">
+            <span class="accordion-role">Ramblin' Rocket Club · GNC Structures Subteam</span>
+            <span class="accordion-meta">
+              <span class="accordion-dates">2024 to now</span>
+              <svg class="accordion-chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 5.5L8 10.5L13 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+          <div class="accordion-panel" id="exp-rocket-club" hidden>
+            <ul>
+              <li>Designed, manufactured, and integrated a camera mount for a jet-vane thrust-vector-controlled rocket.</li>
+              <li>Iterated economical structural improvements to TVC mounts across two gimbaled rockets.</li>
+              <li>Used FDM and SLA printing to rapidly prototype and test mount components.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="exp-kennesaw">
+            <span class="accordion-role">Kennesaw State · Research Assistant</span>
+            <span class="accordion-meta">
+              <span class="accordion-dates">2022 to 2023</span>
+              <svg class="accordion-chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 5.5L8 10.5L13 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+          <div class="accordion-panel" id="exp-kennesaw" hidden>
+            <ul>
+              <li>Synthesized conductive polymer nanomaterials to develop more efficient and cost-effective supercapacitors.</li>
+              <li>Evaluated the capacitance and cycling stability of synthesized nanomaterials with CV and GCD testing.</li>
+              <li>Used SEM and XRD to analyze nanomaterial morphology and composition, guiding purity optimization.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span class="footer-copyright">© 2026 joel williams</span>
+      <div class="footer-links">
+        <a href="mailto:jwilliams812@gatech.edu">email</a>
+        <a href="https://www.linkedin.com/in/jwilliams2204/">linkedin</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

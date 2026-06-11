@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ME 2110 Robot · Joel Williams</title>
+  <meta name="description" content="A scrappy, $47 autonomous robot for a Minecraft-themed arena, built fast and iterated faster, that climbed from a last-place sprint finish to the top 16 of 56 teams.">
+  <link rel="icon" href="../assets/images/favicon.png">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="container">
+      <a class="nav-monogram" href="../index.html">JW</a>
+      <div class="nav-links">
+        <a href="../index.html#work" class="active">work</a>
+        <a href="../about.html">about</a>
+        <a href="../resume.pdf">résumé</a>
+        <a href="../about.html#contact">contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="project-header">
+    <div class="container">
+      <h1 class="project-title">ME 2110 Robot</h1>
+      <p class="project-outcome">A scrappy, $47 autonomous robot for a Minecraft-themed arena, built fast and iterated faster, that climbed from a last-place sprint finish to the top 16 of 56 teams.</p>
+      <p class="project-meta">robotics &amp; mechatronics · me 2110, georgia tech · feb to may 2025 · 4-person team</p>
+      <p class="project-skills"><span class="skills-label">core skills</span> · solidworks · mechatronics · rapid prototyping · 3d printing · laser cutting · embedded systems</p>
+    </div>
+  </header>
+
+  <main class="project-body">
+    <div class="container">
+
+      <figure class="project-hero">
+        <img src="../assets/images/me2110/me2110-hero.jpg" alt="The four-person team in matching Hypixel shirts standing with the robot and design poster at the competition">
+      </figure>
+
+      <section class="project-section">
+        <h2>The story</h2>
+        <p>ME 2110 is Georgia Tech's design-build-compete course: one semester to take an autonomous machine from nothing to a competition floor, with graded sprints along the way that force you to show working hardware long before you feel ready. There is no time to perfect anything, so the only way to do well is to move fast and stay scrappy. Build the simplest thing that could plausibly work, put it in front of the task, learn what breaks, and iterate. That mindset is the whole story of this project.</p>
+        <p>The competition was Minecraft-themed, so the tasks were video-game actions translated into hardware. In a single 40-second autonomous run, each robot had to clear hostile "mobs" (the game's enemy creatures, here represented by blocks) out of its home zone, feed a bone to "tame a wolf" at the center of the arena, mine ore blocks, and dislodge an "End Crystal" and place it atop an obsidian tower. Every task was worth points, and the highest-value ones (the wolf and the crystal) were also the hardest to pull off reliably. All of it had to fit a 12 by 24 by 18 inch envelope, cost under $120, and run on nothing more than a provided mechatronics kit, gravity, five mousetraps, and five rubber bands.</p>
+        <p>Our four-person team built a robot we called Hypixel. I led the mob-knocker arm and the End Crystal lift, owning both from concept through CAD, fabrication, and testing, and I also handled a good share of the documentation (the alternative-designs study, the house of quality, the runtime flowchart) and delivered our studio design review.</p>
+      </section>
+
+      <figure class="project-figure">
+        <img src="../assets/images/me2110/me2110-1.png" alt="CAD model of the Hypixel robot: a laser-cut MDF frame on red wheels with the mob-knocker arm extended">
+        <figcaption class="media-caption">hypixel in cad, mob-knocker arm deployed</figcaption>
+      </figure>
+
+      <section class="project-section">
+        <h2>Structure first, so we could move fast later</h2>
+        <p>We resisted the urge to start gluing parts. We translated the competition into customer needs and engineering requirements, built a function tree, and generated a wide spread of concepts for every task: spring hammers, slingshots, and motor arms for the mobs, gravity slides and pneumatic pistons for delivery, and IR, ultrasonic, or camera options for sensing. Then we scored four full-robot concepts in weighted decision matrices and let the numbers choose, which landed us on a mobile, drivetrain-based design. The structure up front gave the fast iteration later a direction to run in.</p>
+      </section>
+
+      <figure class="project-figure figure--portrait">
+        <img src="../assets/images/me2110/me2110-3.jpg" alt="The Hypixel robot in front of its tri-fold design poster covering the drivetrain, mob knockers, wolf bone slide, and End Crystal lift">
+        <figcaption class="media-caption">the design poster and the final robot</figcaption>
+      </figure>
+
+      <section class="project-section">
+        <h2>Scrappy by design</h2>
+        <p>The whole robot came in at $46.60, roughly 61% under the cap, built from laser-cut MDF, 3D-printed PLA and TPU, a length of lumber, hinges, and rubber bands. A single motor drove the rear wheels through a 3:5 gear ratio, trading speed for the torque needed to haul the subsystems around. My mob-knocker arms rode on 3D-printed pivots, held back in tension by rubber bands against a piston-pinned stopper. When the piston fired, the stopper shot clear and the arms snapped out and unfolded at a hinge with enough force to eject the mobs. My End Crystal lift was a motor-driven arm carrying a solenoid-pin claw that clamped the crystal and raised it about thirty inches, just above the tower. Every choice favored the simplest mechanism that did the job, which is exactly what a tight budget and a ticking clock reward.</p>
+      </section>
+
+      <div class="figure-row">
+        <figure class="project-figure">
+          <img src="../assets/images/me2110/me2110-2.jpg" alt="Labeled CAD view of the drivetrain: a single motor driving the rear TPU wheels through a 3:5 gear ratio">
+          <figcaption class="media-caption">one motor, a 3:5 ratio, tpu wheels</figcaption>
+        </figure>
+        <figure class="project-figure">
+          <img src="../assets/images/me2110/me2110-5.png" alt="CAD view of the End Crystal lift claw with its solenoid pin at the end of the arm">
+          <figcaption class="media-caption">the solenoid-pin claw of the crystal lift</figcaption>
+        </figure>
+      </div>
+
+      <section class="project-section">
+        <h2>Test, fail, iterate</h2>
+        <p>We split testing into subsystem tests off the track and full-system runs on it, where most of the trouble lived in the timing of the autonomous code. The competition made the payoff of iterating impossible to miss. In the first sprint we scored a single point and finished last in our group of six. Building a drivetrain that actually worked had eaten most of our time, and since every subsystem rode on that mobile base, nothing else could function until it did. We tore into the problems, and one fix was almost comically simple: the robot kept getting hung up on a bump in the track, so we increased the wheel radius. We standardized our starting position for repeatability, and by the second sprint we had climbed to fourth, averaging over six points.</p>
+      </section>
+
+      <figure class="project-figure">
+        <video autoplay muted loop playsinline preload="metadata" poster="../assets/videos/me2110/me2110-poster.jpg">
+          <source src="../assets/videos/me2110/me2110-loop.mp4" type="video/mp4">
+        </video>
+        <figcaption class="media-caption">a competition run</figcaption>
+      </figure>
+
+      <section class="project-section">
+        <h2>Outcome</h2>
+        <p>By the final competition we reached the top 16 of 56 teams and placed 11th of 56 in the design review. Our rounds ran 14, 9, 27, and 30 points, and in the fifth the wolf bone jammed and we were eliminated, finishing with an 18.2-point average. The subsystem I owned outright, the mob-knocker arm, scored in every single round of the competition. The End Crystal lift was the honest counterpoint: it reliably dislodged the crystal for its points but never nailed the full placement on the tower, a casualty of running out of time to develop it. That tradeoff is the lesson of the whole class in miniature. You cannot perfect everything in a semester, so you make the most important things reliable and you ship.</p>
+      </section>
+
+      <figure class="project-figure figure--portrait">
+        <img src="../assets/images/me2110/me2110-4.jpg" alt="The Hypixel robot in the Invention Studio with its End Crystal lift arm raised about thirty inches">
+        <figcaption class="media-caption">the crystal lift, raised</figcaption>
+      </figure>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span class="footer-copyright">© 2026 joel williams</span>
+      <div class="footer-links">
+        <a href="mailto:jwilliams812@gatech.edu">email</a>
+        <a href="https://www.linkedin.com/in/jwilliams2204/">linkedin</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
