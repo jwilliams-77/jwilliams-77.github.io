@@ -217,7 +217,7 @@ video {
 }
 
 .hero-name {
-  font-size: 40px;
+  font-size: 48px;
 }
 
 .hero-rule {
@@ -230,7 +230,7 @@ video {
 
 .hero-tagline {
   color: var(--text-secondary);
-  font-size: 17px;
+  font-size: 18px;
   max-width: 30em;
   margin: 0;
 }
@@ -242,8 +242,8 @@ video {
 }
 
 .headshot {
-  width: 140px;
-  height: 140px;
+  width: 220px;
+  height: 220px;
   background: var(--surface);
   border: 0.5px solid var(--hairline-strong);
   border-radius: var(--radius-pill);
@@ -336,8 +336,55 @@ video {
   object-fit: cover;
 }
 
+/* nudge the crop window up for tall photos whose subject sits high */
+.tile-media img.crop-top {
+  object-position: 50% 18%;
+}
+
+/* show the whole image instead of cropping (CAD renders) */
+.tile-media--contain img {
+  object-fit: contain;
+  padding: 12px;
+}
+
+/* white panel behind transparent renders */
+.tile-media--light {
+  background: #ffffff;
+}
+
+/* featured tile: portrait media beside the caption */
+.work-featured {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
 .work-featured .tile-media {
-  height: 420px;
+  height: 480px;
+  background: #ffffff;
+}
+
+.work-featured .tile-media img {
+  object-fit: contain;
+}
+
+.featured-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding-right: 24px;
+}
+
+.work-featured .tile-title {
+  font-size: 26px;
+}
+
+.work-featured .tile-outcome {
+  font-size: 16px;
+  max-width: 26em;
+  margin: 0;
 }
 
 .tile-caption {
@@ -379,7 +426,7 @@ video {
 }
 
 .work-grid .tile-media {
-  height: 200px;
+  height: 320px;
 }
 
 .work-grid .tile-title {
@@ -580,16 +627,24 @@ video {
   color: var(--accent);
 }
 
+/* prose sits in a centered reading column; media breaks out to full width */
+.project-header .container > *,
+.project-body .project-section {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .project-hero {
   margin: 0 0 24px;
 }
 
 .project-hero img {
   display: block;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   max-height: 540px;
-  object-fit: contain;
-  background: var(--surface);
+  margin: 0 auto;
   border: 0.5px solid var(--hairline);
   border-radius: var(--radius-tile);
 }
@@ -727,11 +782,25 @@ video {
   }
 
   .hero-name {
-    font-size: 34px;
+    font-size: 36px;
+  }
+
+  .headshot {
+    width: 160px;
+    height: 160px;
+  }
+
+  .work-featured {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   .work-featured .tile-media {
-    height: 260px;
+    height: 380px;
+  }
+
+  .featured-text {
+    padding: 0 4px 8px;
   }
 
   .work-grid {
