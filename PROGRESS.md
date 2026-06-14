@@ -1,6 +1,6 @@
 # Progress
 
-Last updated: June 12, 2026
+Last updated: June 14, 2026
 
 ## Done
 
@@ -19,7 +19,12 @@ Last updated: June 12, 2026
   - Race couch warehouse clip re-encoded with a deflicker filter.
   - Skills stripe extended: CATIA, FMEA, Fusion (CAM), C++.
   - "ME 2110 Robot" renamed to "Competition Task Robot" (tile, page title, h1); URL stays `projects/me2110.html`.
-  - Stylesheet links carry a cache-busting version (`styles.css?v=3`). Bump the number whenever styles.css changes.
+  - Stylesheet links carry a cache-busting version (`styles.css?v=N`, currently v=13). Bump the number whenever styles.css or main.js changes.
+- Motion and interaction pass (all CSS-driven where possible, all gated by `prefers-reduced-motion`):
+  - Tile hover preview: image blurs and recedes while a short teaser rises into the frame; teaser copy is in `index.html`. Dimming is done entirely through the overlay so white-panel tiles stay seamless.
+  - Home hero + skills stripe have a staggered on-load entrance; the about page reuses the same entrance.
+  - Selected work, just-for-fun, and experience sit blurred and dimmed (a "peek") on load and are non-clickable until cleared. A fixed "view work" button fades in after the hero settles; the first scroll, or clicking it, clears the peek and reveals each section as it enters view. Clicking glides down with a custom eased scroll (~900ms in `main.js`).
+  - Project pages: each content block fades and rises as it scrolls into view.
 
 ## Next
 

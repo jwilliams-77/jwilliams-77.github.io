@@ -323,10 +323,12 @@ video {
 }
 
 .tile-media {
+  position: relative;
   background: var(--surface);
   border: 0.5px solid var(--hairline);
   border-radius: var(--radius-tile);
   overflow: hidden;
+  transition: background-color 0.4s ease, border-color 0.4s ease;
 }
 
 .tile-media img,
@@ -334,6 +336,7 @@ video {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: filter 0.4s ease, transform 0.5s ease;
 }
 
 /* nudge the crop window up for tall photos whose subject sits high */
@@ -388,11 +391,14 @@ video {
 }
 
 .tile-caption {
+  margin-top: 14px;
+}
+
+.tile-caption-head {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  gap: 24px;
-  margin-top: 14px;
+  gap: 16px;
 }
 
 .tile-title {
@@ -405,7 +411,7 @@ video {
 .tile-outcome {
   color: var(--text-secondary);
   font-size: 14px;
-  margin: 4px 0 0;
+  margin: 7px 0 0;
 }
 
 .tile-tag {
@@ -431,6 +437,57 @@ video {
 
 .work-grid .tile-title {
   font-size: 15px;
+}
+
+/* hover preview: image recedes behind a teaser that rises into the frame */
+.tile-preview {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 22px;
+  background: linear-gradient(to top, rgba(7, 9, 15, 0.85), rgba(7, 9, 15, 0.55) 50%, rgba(7, 9, 15, 0.38));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.tile-preview p {
+  margin: 0;
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.55;
+  transform: translateY(16px);
+  transition: transform 0.45s ease;
+}
+
+.work-featured .tile-preview p {
+  font-size: 16px;
+}
+
+@media (hover: hover) {
+  .work-tile:hover .tile-media,
+  .fun-tile:hover .tile-media {
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .work-tile:hover .tile-media img,
+  .work-tile:hover .tile-media video,
+  .fun-tile:hover .tile-media img,
+  .fun-tile:hover .tile-media video {
+    filter: blur(4px);
+    transform: scale(1.05);
+  }
+
+  .work-tile:hover .tile-preview,
+  .fun-tile:hover .tile-preview {
+    opacity: 1;
+  }
+
+  .work-tile:hover .tile-preview p,
+  .fun-tile:hover .tile-preview p {
+    transform: none;
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -770,6 +827,209 @@ video {
 /* --------------------------------------------------------------------------
    Responsive
    -------------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------------------
+   Scroll reveal (classes added by main.js)
+   -------------------------------------------------------------------------- */
+
+/* project pages: blocks fade and rise as they enter view */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* home page: sections below the skills stripe sit blurred and dimmed until the
+   first scroll, then clear into view */
+.reveal-peek {
+  opacity: 0.4;
+  filter: blur(7px);
+  pointer-events: none;
+  transition: opacity 0.8s ease, filter 0.8s ease;
+}
+
+.reveal-peek.is-visible {
+  opacity: 1;
+  filter: none;
+  pointer-events: auto;
+}
+
+/* scroll cue: injected by main.js on the home page. Prompts the first scroll
+   and, when clicked, jumps down into the selected-work section. */
+.scroll-cue {
+  position: fixed;
+  left: 50%;
+  bottom: 26px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 6px 12px;
+  background: none;
+  border: none;
+  font: inherit;
+  color: var(--text-muted);
+  opacity: 0;
+  cursor: pointer;
+  pointer-events: none;
+  transition: opacity 0.5s ease, color 0.2s ease;
+  z-index: 20;
+}
+
+.scroll-cue.is-shown {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.scroll-cue:hover {
+  color: var(--link);
+}
+
+.scroll-cue-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: lowercase;
+  letter-spacing: 0.12em;
+}
+
+.scroll-cue-arrow {
+  width: 16px;
+  height: 16px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .scroll-cue.is-shown .scroll-cue-arrow {
+    animation: cueBounce 1.6s ease-in-out infinite;
+  }
+}
+
+@keyframes cueBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+
+/* --------------------------------------------------------------------------
+   Reduced motion: keep the cues, drop the movement
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-peek {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+    pointer-events: auto;
+  }
+
+  .tile-preview p {
+    transform: none;
+  }
+
+  .work-tile:hover .tile-media img,
+  .work-tile:hover .tile-media video,
+  .fun-tile:hover .tile-media img,
+  .fun-tile:hover .tile-media video {
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Entrance animations (home page, once on load; off under reduced motion)
+   -------------------------------------------------------------------------- */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes growRule {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-eyebrow {
+    animation: fadeUp 0.7s ease both;
+    animation-delay: 0.05s;
+  }
+
+  .hero-name {
+    animation: fadeUp 0.7s ease both;
+    animation-delay: 0.15s;
+  }
+
+  .hero-rule {
+    transform-origin: left center;
+    animation: growRule 0.5s ease both;
+    animation-delay: 0.4s;
+  }
+
+  .hero-tagline {
+    animation: fadeUp 0.7s ease both;
+    animation-delay: 0.5s;
+  }
+
+  .hero-aside {
+    animation: fadeUp 0.7s ease both;
+    animation-delay: 0.6s;
+  }
+
+  .skills-pills .pill {
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .skills-pills .pill:nth-child(1) { animation-delay: 0.6s; }
+  .skills-pills .pill:nth-child(2) { animation-delay: 0.64s; }
+  .skills-pills .pill:nth-child(3) { animation-delay: 0.68s; }
+  .skills-pills .pill:nth-child(4) { animation-delay: 0.72s; }
+  .skills-pills .pill:nth-child(5) { animation-delay: 0.76s; }
+  .skills-pills .pill:nth-child(6) { animation-delay: 0.8s; }
+  .skills-pills .pill:nth-child(7) { animation-delay: 0.84s; }
+  .skills-pills .pill:nth-child(8) { animation-delay: 0.88s; }
+  .skills-pills .pill:nth-child(9) { animation-delay: 0.92s; }
+  .skills-pills .pill:nth-child(10) { animation-delay: 0.96s; }
+  .skills-pills .pill:nth-child(11) { animation-delay: 1s; }
+  .skills-pills .pill:nth-child(12) { animation-delay: 1.04s; }
+
+  /* about page: same staggered entrance as the home hero */
+  .about h1 {
+    animation: fadeUp 0.7s ease both;
+    animation-delay: 0.1s;
+  }
+
+  .about-copy p {
+    animation: fadeUp 0.7s ease both;
+    animation-delay: 0.22s;
+  }
+
+  .about .headshot {
+    animation: fadeUp 0.7s ease both;
+    animation-delay: 0.35s;
+  }
+
+  .contact {
+    animation: fadeUp 0.7s ease both;
+    animation-delay: 0.5s;
+  }
+}
 
 @media (max-width: 700px) {
   .hero {
