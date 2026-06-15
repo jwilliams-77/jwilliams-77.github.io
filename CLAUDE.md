@@ -1,4 +1,4 @@
-# Joel Williams Portfolio — Build Brief (CLAUDE.md)
+# Joel Williams Portfolio: Build Brief (CLAUDE.md)
 
 This file is the single source of truth for building Joel Williams' product-design portfolio website. Read it at the start of every session. All copy in the Content section is final and locked: place it verbatim, do not rewrite it.
 
@@ -22,7 +22,8 @@ Target file structure:
 ```
 joelwilliams.github.io/
 ├── index.html              landing page
-├── about.html              about + contact
+├── about.html              about + interests
+├── contact.html            email + linkedin
 ├── projects/
 │   ├── focus-puck.html
 │   ├── tvc-mount.html
@@ -31,7 +32,7 @@ joelwilliams.github.io/
 │   └── race-couch.html
 ├── assets/
 │   ├── css/styles.css       single shared stylesheet
-│   ├── js/main.js           accordion toggle and any small interactions
+│   ├── js/main.js           accordion, hover previews, entrances, scroll reveal
 │   ├── images/              one subfolder per project + shared (headshot, favicon, og)
 │   └── videos/              short looping clips, one subfolder per project
 ├── resume.pdf
@@ -42,6 +43,7 @@ joelwilliams.github.io/
 - One shared `styles.css` and one `main.js` across all pages for consistency.
 - Use semantic HTML and accessible markup (alt text on all images, buttons for interactive controls, aria attributes on the accordion).
 - Keep every page on the same nav and footer.
+- The stylesheet link on every page carries a cache-busting query (`styles.css?v=N`, currently `v=14`). Bump N whenever `styles.css` or `main.js` changes so browsers do not serve a stale copy.
 
 ---
 
@@ -74,7 +76,7 @@ Dark mode only. This is a dark site by design, not a theme toggle.
 ### Typography
 - **Sans** for the name, headings, and body: Helvetica Neue, Arial, system sans-serif. Big type (name) at weight 500 with tight letter-spacing (about -0.02em). Section headers can be the same sans.
 - **Monospace, lowercase** for metadata, labels, captions, nav links, and date ranges: section labels like `skills highlight`, `selected work`, `experience`, the hero eyebrow, project category tags, and figure captions. Keep these lowercase and small (11 to 12px).
-- The name in the hero runs large (about 40px). One-line outcomes and taglines sit in `--text-secondary`.
+- The name in the hero runs large (about 48px). One-line outcomes and taglines sit in `--text-secondary`.
 
 ### Shape and spacing
 - Generous whitespace. Let the layout breathe.
@@ -84,7 +86,7 @@ Dark mode only. This is a dark site by design, not a theme toggle.
 
 ### Media: images and video (the most important execution detail)
 
-The design is roughly 70% imagery. It looks gorgeous with great visuals and amateur with weak ones. Until real assets are ready, use clean `--surface` colored blocks as placeholders (no "image coming soon" text).
+The design is roughly 70% imagery. It looks gorgeous with great visuals and amateur with weak ones. Until real assets are ready, use clean `--surface` colored blocks as placeholders (no "image coming soon" text). Real project images and short looping videos are now in place across the site, batch-resized and compressed; raw exports are kept out of the deploy in a gitignored `_raw/` folder.
 
 **Folder convention**
 - Images live in `assets/images/<project>/`, one subfolder per project, plus shared items (headshot, favicon, og image) at the `assets/images/` top level.
@@ -110,10 +112,18 @@ Provide all of these by placing the files in the repo folders on disk, then tell
 - The selected-work grid is a featured tile plus a three-up row on desktop and reflows to single column on mobile.
 - The skills stripe wraps naturally.
 
+### Motion and interaction
+Motion is subtle, in the site's flat and precise spirit, and every effect is layered through `main.js` and CSS and gated behind `prefers-reduced-motion`. Content is only ever hidden or blurred by JS, so a visitor without JavaScript (or with reduced motion on) always sees the full, static page.
+- **Entrances:** the home hero (eyebrow, name, accent rule, tagline, headshot) and the skills pills fade and rise in a short staggered sequence on load. The about and contact pages reuse the same staggered entrance.
+- **Tile hover previews:** hovering a work tile blurs and dims the image behind a dark wash while a short teaser rises into the frame, and the tile border brightens. Gated to hover-capable devices so it never sticks on touchscreens.
+- **Home "peek" and reveal:** on load, everything below the skills stripe (selected work, just for fun, experience) sits blurred, dimmed, and non-interactive. A fixed `view work` button fades in after the hero settles; the first scroll, or a click of that button (which glides down with a slow eased scroll), clears the peek and reveals each section as it enters view.
+- **Project pages:** each content block fades and rises as it scrolls into view.
+
 ### Accessibility
 - Maintain strong contrast (the tokens above are tuned for it).
 - All images get meaningful alt text.
 - The experience accordion uses real `<button>` elements with `aria-expanded`, keyboard operable.
+- The `view work` cue is a real `<button>`; all motion respects `prefers-reduced-motion`.
 
 ---
 
@@ -122,7 +132,7 @@ Provide all of these by placing the files in the repo folders on disk, then tell
 ### Nav (every page)
 - Left: `JW` monogram, weight 500, slightly tracked.
 - Right: monospace lowercase links: `work`, `about`, `résumé`, `contact`.
-  - `work` to `index.html#work`, `about` to `about.html`, `résumé` to `resume.pdf`, `contact` to `about.html#contact`.
+  - `work` to `index.html#work`, `about` to `about.html`, `résumé` to `resume.pdf`, `contact` to `contact.html`.
 - The current page's link sits in `--link`; the rest in `--text-secondary` and brighten on hover.
 - Hairline border under the nav.
 
@@ -131,19 +141,30 @@ Provide all of these by placing the files in the repo folders on disk, then tell
 - Name, large sans: `Joel Williams`
 - A short accent rule under the name (about 46px wide, 3px tall, `--accent`).
 - Tagline in `--text-secondary` (see Content).
-- Right column: a headshot block (square, about 140px, `--surface`, hairline border, rounded 8px), then two stacked monospace links beneath it: `linkedin ↗` and `résumé ↓`, both in `--link`.
+- Right column: a headshot block (square, about 220px, `--surface`, hairline border, rounded 8px, holding Joel's photo), then two stacked monospace links beneath it: `linkedin ↗` and `résumé ↓`, both in `--link`.
+- On load, the eyebrow, name, accent rule, tagline, and headshot column fade and rise in a short staggered sequence (see Motion and interaction).
 
 ### Skills highlight stripe
 - A band with a hairline top and bottom border.
 - Small monospace label `skills highlight`, then the skill pills.
 - Pills: monospace, `--pill-text`, hairline border, rounded 8px, small padding. They wrap as needed.
+- On load, the pills cascade in one after another as part of the home entrance.
+
+### Interests stripe (about page)
+- Styled identically to the skills highlight stripe, reusing the same classes: same hairline band, same monospace lowercase label, same bordered pills, same spacing.
+- Label `interests`, then the interest pills.
+
+### Résumé download button (about and contact pages)
+- A single bordered button: monospace lowercase label `download résumé ↓`, hairline border, rounded like a pill, `--text-secondary` text. The border shifts to `--accent` and the text brightens on hover.
+- An `<a href="resume.pdf" download>` so it downloads rather than opening in the browser.
 
 ### Selected work
 - Small monospace section label `selected work`.
-- A featured tile (Focus Puck) spanning full width: a tall image area on top, then a caption row with the project name and one-line outcome on the left and a monospace category tag (in `--accent`) on the right.
-- Below it, a three-up grid of the other tiles (TVC Mount, Fin Tabs Rocket, ME 2110 Robot): each a shorter image area, then name and a monospace category tag.
-- Tiles have a hairline border that shifts to `--accent` on hover.
-- Each tile links to its project page.
+- A featured tile (Focus Puck) as a two-column card: a tall image panel on the left, and on the right a stacked caption (monospace category tag in `--accent`, project name, one-line outcome).
+- Below it, a three-up grid of the other tiles (TVC Mount, Fin Tabs Rocket, Competition Task Robot): each an image area, then a caption with the project name and category tag on one row and the one-line outcome spanning the full width below.
+- Tiles have a hairline border that shifts to `--accent` on hover. On hover the image blurs and dims behind a dark wash while a short teaser rises into the frame (see Motion and interaction).
+- Per-tile image fit varies: photos fill the tile (cover), transparent CAD renders are shown whole on a white panel.
+- Each tile links to its project page. On the home page, the selected-work grid, the just-for-fun tile, and the experience section start in the blurred, dimmed, non-interactive "peek" state and only become clickable once revealed.
 
 ### Just for fun
 - Small monospace label `just for fun`.
@@ -165,12 +186,12 @@ Provide all of these by placing the files in the repo folders on disk, then tell
 Every project page follows the same skeleton:
 1. Nav.
 2. Title (sans), one-line outcome (secondary), metadata line (monospace: discipline · context · timeline · role), and a `core skills` line.
-3. A hero image.
+3. A hero image, rendered at its natural aspect ratio (not cropped into a fixed band).
 4. **The story** section first (the why and the objectives).
-5. Body sections that flex per project, with images between them.
+5. Body sections that flex per project, with media between them. Prose sits in a centered, comfortable-measure reading column while figures break out wider; figures can be a single image, a two-up row, a constrained portrait, or a short looping muted video with a poster.
 6. Footer.
 
-Keep each section short and image-flanked. Do not let prose stack into a wall.
+Keep each section short and image-flanked. Do not let prose stack into a wall. Each block fades and rises as it scrolls into view.
 
 ---
 
@@ -178,13 +199,15 @@ Keep each section short and image-flanked. Do not let prose stack into a wall.
 
 **index.html**, in order: nav, hero, skills highlight stripe, selected work (featured + grid), just for fun (Race Couch), experience accordions, footer.
 
-**about.html:** nav, the about copy, a contact block (email, LinkedIn, GitHub) anchored at `#contact`, footer.
+**about.html:** nav, the about copy, a résumé download button, then an interests stripe (mirroring the skills highlight stripe), footer.
+
+**contact.html:** nav, a contact block holding only email and LinkedIn (no GitHub), plus a résumé download button, footer.
 
 **projects/*.html:** the five project pages, each using the template above.
 
-**resume.pdf:** Joel's resume, linked from the nav and the hero.
+**resume.pdf:** Joel's resume, linked from the nav, the hero, and the résumé download button on the about and contact pages.
 
-Contact details: email jwilliams812@gatech.edu, location Atlanta, GA. LinkedIn and GitHub links to be filled with the live URLs. Do not publish a phone number.
+Contact details: email jwilliams812@gatech.edu, location Atlanta, GA, LinkedIn at the live URL. Do not include a GitHub link, and do not publish a phone number.
 
 ---
 
@@ -194,19 +217,34 @@ Contact details: email jwilliams812@gatech.edu, location Atlanta, GA. LinkedIn a
 > I design, prototype, and machine considered hardware, from the desk to orbit.
 
 ### 7.2 About (two paragraphs)
-> I'm a mechanical engineering student at Georgia Tech with a product designer's instincts and a maker's hands. What pulls me in is the full arc of a physical product: understanding the problem, sketching and modeling a solution, then actually building it and holding the result. I'm as comfortable running an FEA study as I am cutting parts on a CNC or pulling a print off the bed, and that range is what lets me design things that are buildable, not just renderable.
+> I'm a mechanical engineering student at Georgia Tech with a product designer's instincts and a maker's hands, happiest taking a physical product through the full arc from idea to a finished object I can hold. I'm also pursuing a computer science minor focused on devices, because the work that pulls me in lives where hardware and software meet: products that are mechanically considered and intelligently controlled. Whether I'm running an FEA study, machining a part, or writing the firmware that brings it to life, I like owning the whole path to something real.
 >
-> I work by a couple of rules I picked up early: measure twice and cut once, but also fail fast and learn faster. The projects here run from a desk focus timer to flight-validated rocket hardware to a couch you can drive, and the thread through all of them is the same, taking an idea and turning it into something real and considered.
+> Outside the workshop, I'm usually chasing something creative or competitive. I like to shoot and edit my own video content, photograph interesting scenes from my travels, and pick up the guitar when I want to slow down. The rest of my time goes to the gym or the basketball court. It's a random mix, but it feeds the same instincts I bring to my work: an eye for craft, the patience to practice something until it clicks, and a love of getting better at hard things.
 
 ### 7.3 Skills highlight stripe
-SolidWorks · CREO · Windchill · ANSYS · GD&T · DFMA · Machining · Rapid prototyping
+SolidWorks · CREO · CATIA · Windchill · ANSYS · FMEA · GD&T · DFMA · Machining · Fusion (CAM) · Rapid prototyping · C++
+
+### 7.3.1 Interests stripe (about page)
+Photography · Video editing · Weightlifting · Basketball · Guitar
 
 ### 7.4 Project tile one-liners (landing)
 - **Focus Puck:** A focus timer for my desk, designed and built end to end over a winter break.
 - **TVC Mount:** A ground-up thrust-vector-control-mount design that gave a finless rocket ±20° of steering.
 - **Fin Tabs Rocket:** Responsible engineer on a full-scale, fin-tab-guided rocket.
-- **ME 2110 Robot:** A scrappy $47 competition robot that climbed to the top 16 of 56 teams.
+- **Competition Task Robot:** A scrappy $47 competition robot that climbed to the top 16 of 56 teams.
 - **Race Couch:** A drivable couch steered by a game controller, the kind of fun, random project that sparks people's joy for engineering.
+
+Note: the tile titled "Competition Task Robot" is the ME 2110 project (file `projects/me2110.html`); the course context stays in the page metadata line.
+
+Category tags (monospace, `--accent`, shown on each tile): Focus Puck `product design`, TVC Mount `aerospace structures`, Fin Tabs Rocket `systems integration`, Competition Task Robot `mechatronics`, Race Couch `just for fun`.
+
+### 7.4.1 Tile hover teasers (landing)
+Short teaser that rises into each tile on hover:
+- **Focus Puck:** One tap wakes it, two starts the timer, and a ring of light counts you down. Built end to end over a winter break.
+- **TVC Mount:** A ball-and-socket gimbal that unlocked ±20° of control authority inside a 3-inch body tube, flown across three launches.
+- **Fin Tabs Rocket:** Responsible engineer owning the master CAD, the build plan, and the integration of a full-scale, fin-tab-controlled rocket.
+- **Competition Task Robot:** A $47 robot built fast and iterated faster: last place in sprint one, top 16 of 56 by finals.
+- **Race Couch:** A couch you steer like a tank with a PS4 controller. The gloriously goofy project that made me want more.
 
 ### 7.5 Experience accordions
 
@@ -382,9 +420,9 @@ The CDR is complete and component manufacturing is underway. Full integration an
 
 ---
 
-### 7.9 Project page: ME 2110 Robot
+### 7.9 Project page: Competition Task Robot (ME 2110)
 
-**Title:** ME 2110 Robot
+**Title:** Competition Task Robot
 **One-line outcome:** A scrappy, $47 autonomous robot for a Minecraft-themed arena, built fast and iterated faster, that climbed from a last-place sprint finish to the top 16 of 56 teams.
 **Metadata:** Robotics & mechatronics · ME 2110, Georgia Tech · Feb to May 2025 · 4-person team
 **core skills:** SolidWorks · Mechatronics · Rapid prototyping · 3D printing · Laser cutting · Embedded systems
@@ -443,7 +481,7 @@ Suggested order:
 3. Build `index.html` end to end (nav, hero, skills, work, just-for-fun, experience, footer) with placeholder image blocks.
 4. Wire up the experience accordion in `main.js` (collapsed by default, click to toggle, chevron rotates, keyboard accessible).
 5. Build the five project pages from the shared template, dropping in the locked copy.
-6. Build `about.html` and the contact block.
+6. Build `about.html` (about copy, résumé download button, interests stripe) and `contact.html` (email and LinkedIn, plus a résumé download button).
 7. Confirm responsive behavior at mobile and desktop widths.
 8. Swap placeholder blocks for real images as they arrive, then add favicon, link-preview (og) image, and per-page titles.
 

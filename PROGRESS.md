@@ -1,6 +1,6 @@
 # Progress
 
-Last updated: June 14, 2026
+Last updated: June 15, 2026
 
 ## Done
 
@@ -19,12 +19,17 @@ Last updated: June 14, 2026
   - Race couch warehouse clip re-encoded with a deflicker filter.
   - Skills stripe extended: CATIA, FMEA, Fusion (CAM), C++.
   - "ME 2110 Robot" renamed to "Competition Task Robot" (tile, page title, h1); URL stays `projects/me2110.html`.
-  - Stylesheet links carry a cache-busting version (`styles.css?v=N`, currently v=13). Bump the number whenever styles.css or main.js changes.
+  - Stylesheet links carry a cache-busting version (`styles.css?v=N`, currently v=14). Bump the number whenever styles.css or main.js changes.
 - Motion and interaction pass (all CSS-driven where possible, all gated by `prefers-reduced-motion`):
   - Tile hover preview: image blurs and recedes while a short teaser rises into the frame; teaser copy is in `index.html`. Dimming is done entirely through the overlay so white-panel tiles stay seamless.
   - Home hero + skills stripe have a staggered on-load entrance; the about page reuses the same entrance.
   - Selected work, just-for-fun, and experience sit blurred and dimmed (a "peek") on load and are non-clickable until cleared. A fixed "view work" button fades in after the hero settles; the first scroll, or clicking it, clears the peek and reveals each section as it enters view. Clicking glides down with a custom eased scroll (~900ms in `main.js`).
   - Project pages: each content block fades and rises as it scrolls into view.
+- Contact split into its own page and About expanded:
+  - New `contact.html` holds only email and LinkedIn (no GitHub), plus a résumé download button. The `contact` nav link points to it on every page.
+  - About page has new two-paragraph copy, a résumé download button, and an `interests` stripe (Photography, Video editing, Weightlifting, Basketball, Guitar) reusing the skills-stripe styling. The old contact block is gone.
+  - New `.resume-download` button component (hairline border, mono lowercase `download résumé ↓`, accent on hover), on both About and Contact, links to `resume.pdf` with the `download` attribute.
+- CLAUDE.md fully synced to the built site: new about copy and interests stripe, contact page, résumé button, nav target, the 12-item skills list, robot rename and category tags, the tile hover teasers, and a Motion and interaction subsection. No em dashes anywhere.
 
 ## Next
 

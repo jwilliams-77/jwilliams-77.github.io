@@ -797,7 +797,12 @@ video {
 }
 
 .contact {
-  padding: 0 0 72px;
+  padding: 72px 0;
+}
+
+.contact h1 {
+  font-size: 34px;
+  margin-bottom: 10px;
 }
 
 .contact-links {
@@ -822,6 +827,37 @@ video {
   letter-spacing: 0.04em;
   color: var(--text-faint);
   margin: 0 0 16px;
+}
+
+/* résumé download button (about and contact pages) */
+.resume-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: lowercase;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  border: 0.5px solid var(--hairline-strong);
+  border-radius: var(--radius-pill);
+  padding: 10px 16px;
+  width: fit-content;
+  transition: border-color 0.18s ease, color 0.18s ease;
+}
+
+.resume-download:hover {
+  border-color: var(--accent);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.about-copy .resume-download {
+  margin-top: 4px;
+}
+
+.contact .resume-download {
+  margin-top: 24px;
 }
 
 /* --------------------------------------------------------------------------
@@ -1020,14 +1056,35 @@ video {
     animation-delay: 0.22s;
   }
 
-  .about .headshot {
+  .about-copy .resume-download {
     animation: fadeUp 0.7s ease both;
-    animation-delay: 0.35s;
+    animation-delay: 0.34s;
   }
 
-  .contact {
+  .about .headshot {
     animation: fadeUp 0.7s ease both;
-    animation-delay: 0.5s;
+    animation-delay: 0.42s;
+  }
+
+  /* contact page: same staggered entrance */
+  .contact h1 {
+    animation: fadeUp 0.7s ease both;
+    animation-delay: 0.1s;
+  }
+
+  .contact-note {
+    animation: fadeUp 0.7s ease both;
+    animation-delay: 0.2s;
+  }
+
+  .contact-links {
+    animation: fadeUp 0.7s ease both;
+    animation-delay: 0.32s;
+  }
+
+  .contact .resume-download {
+    animation: fadeUp 0.7s ease both;
+    animation-delay: 0.44s;
   }
 }
 
