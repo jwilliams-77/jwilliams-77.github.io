@@ -286,7 +286,7 @@ Short teaser that rises into each tile on hover:
 **Title:** Focus Puck
 **One-line outcome:** A focus timer for the desk, engineered for modularity, simple assembly, and intuitive interaction.
 **Metadata:** Product Design · Dec 2025 to Jan 2026 · Personal Project
-**core skills:** SolidWorks · ANSYS FEA · DFAM · Rapid Prototyping · 3D Printing (Formlabs Form 4 + Bambu X1E) · Mechanical Packaging for Electronics
+**core skills:** SolidWorks · ANSYS FEA · DFMA · Rapid Prototyping · 3D Printing (Formlabs Form 4 + Bambu X1E) · Mechanical Packaging for Electronics
 
 **The story**
 
@@ -294,7 +294,7 @@ The idea hit me at the end of finals week in December 2025. After two and a half
 
 So I claimed my Invention Studio privileges and a lot of late nights in the makerspace, and built Focus Puck, a single-purpose desk timer for focused work. One object, one job, designed to be something I would actually want to reach for.
 
-The objectives I set myself: a compact, desk-friendly timer built for flexible iteration and intuitive assembly; a purpose-built enclosure that packaged the Arduino, sensors, and perfboard with defined mounting and clean cable routing; and DFAM features throughout so I could print and iterate fast.
+The objectives I set myself: a compact, desk-friendly timer built for flexible iteration and intuitive assembly; a purpose-built enclosure that packaged the Arduino, sensors, and perfboard with defined mounting and clean cable routing; and DFMA features throughout so I could print and iterate fast.
 
 **How it feels to use**
 
@@ -314,7 +314,7 @@ The fasteners themselves are hidden. Heat-set inserts and a few screws tie the s
 
 **Designing for the printer, not against it**
 
-Rather than design a part and then wrestle it onto the bed, I let the manufacturing method shape the geometry from the start. DFAM features cut support material, improved print reliability, and simplified assembly, so every iteration came off cleaner and went together faster. I split the work across two machines on purpose: the Bambu X1E for fast, cheap iteration, and the Formlabs Form 4 where surface finish and final fit mattered.
+Rather than design a part and then wrestle it onto the bed, I let the manufacturing method shape the geometry from the start. DFMA features cut support material, improved print reliability, and simplified assembly, so every iteration came off cleaner and went together faster. I split the work across two machines on purpose: the Bambu X1E for fast, cheap iteration, and the Formlabs Form 4 where surface finish and final fit mattered.
 
 **Proving it out**
 
@@ -322,7 +322,7 @@ I ran ANSYS FEA on the shell for stiffness and the load cases that mattered, the
 
 **Outcome**
 
-A modular, DFAM-optimized enclosure that's quick to iterate and quick to service; a repeatable manufacturing workflow (X1E for speed, Form 4 for final-fit aesthetics, with post-processing to reach the finish I wanted); and a device that assembles, start to finish, in under two minutes.
+A modular, DFMA-optimized enclosure that's quick to iterate and quick to service; a repeatable manufacturing workflow (X1E for speed, Form 4 for final-fit aesthetics, with post-processing to reach the finish I wanted); and a device that assembles, start to finish, in under two minutes.
 
 **What's next**
 
@@ -404,7 +404,7 @@ A lot of the role was coordination across the subteams. I gathered each one's CA
 
 **Planning and supporting the build**
 
-I planned the manufacturing timeline and kept parts machinable and cost-effective, supporting the build with waterjetting and 3D printing. I also leaned on my Invention Studio instructor access to help get components made. One concrete win was on the radial screws securing the nosecone and actuation mechanism to the body tube. Laying out a hole diagram and matching holes around a circular body tube is tedious work, and every added hole makes it worse, so fewer is always better. Applying DFAM, I confirmed six screws carried the load where the design originally called for eight. Two fewer holes meant a simpler hole diagram, a faster build, and no loss of margin.
+I planned the manufacturing timeline and kept parts machinable and cost-effective, supporting the build with waterjetting and 3D printing. I also leaned on my Invention Studio instructor access to help get components made. One concrete win was on the radial screws securing the nosecone and actuation mechanism to the body tube. Laying out a hole diagram and matching holes around a circular body tube is tedious work, and every added hole makes it worse, so fewer is always better. Applying DFMA, I confirmed six screws carried the load where the design originally called for eight. Two fewer holes meant a simpler hole diagram, a faster build, and no loss of margin.
 
 **Owning the recovery analysis**
 
