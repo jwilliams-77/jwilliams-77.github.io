@@ -222,7 +222,7 @@ Contact details: email jwilliams812@gatech.edu, location Atlanta, GA, LinkedIn a
 > Outside the workshop, I'm usually chasing something creative or competitive. I like to shoot and edit my own video content, photograph interesting scenes from my travels, and pick up the guitar when I want to slow down. The rest of my time goes to the gym or the basketball court. It's a random mix, but it feeds the same instincts I bring to my work: an eye for craft, the patience to practice something until it clicks, and a love of getting better at hard things.
 
 ### 7.3 Skills highlight stripe
-SolidWorks · CREO · CATIA · Windchill · ANSYS · FMEA · GD&T · DFMA · Machining · Fusion (CAM) · Rapid prototyping · Python
+SolidWorks · CREO · CATIA · Windchill · ANSYS · FMEA · GD&T · DFMA · Machining · Fusion (CAM) · Prototyping · Python
 
 ### 7.3.1 Interests stripe (about page)
 Photography · Video editing · Weightlifting · Basketball · Guitar
