@@ -43,7 +43,7 @@ joelwilliams.github.io/
 - One shared `styles.css` and one `main.js` across all pages for consistency.
 - Use semantic HTML and accessible markup (alt text on all images, buttons for interactive controls, aria attributes on the accordion).
 - Keep every page on the same nav and footer.
-- The stylesheet link on every page carries a cache-busting query (`styles.css?v=N`, currently `v=14`). Bump N whenever `styles.css` or `main.js` changes so browsers do not serve a stale copy.
+- The stylesheet link on every page carries a cache-busting query (`styles.css?v=N`, currently `v=21`). Bump N whenever `styles.css` or `main.js` changes so browsers do not serve a stale copy.
 
 ---
 
@@ -75,7 +75,7 @@ Dark mode only. This is a dark site by design, not a theme toggle.
 
 ### Typography
 - **Sans** for the name, headings, and body: Helvetica Neue, Arial, system sans-serif. Big type (name) at weight 500 with tight letter-spacing (about -0.02em). Section headers can be the same sans.
-- **Monospace, lowercase** for metadata, labels, captions, nav links, and date ranges: section labels like `skills highlight`, `selected work`, `experience`, the hero eyebrow, project category tags, and figure captions. Keep these lowercase and small (11 to 12px).
+- **Monospace, small (11 to 12px)** for metadata, labels, captions, nav links, and date ranges. UI labels use **Title Case** (capitalize the first letter of each word): nav links, the hero eyebrow, section labels (`Skills Highlight`, `Selected Work`, `Just For Fun`, `Experience`, `Interests`), project category tags, the hero and footer links, and the résumé button. Figure captions, project metadata lines, core-skills lines, and date ranges stay lowercase.
 - The name in the hero runs large (about 48px). One-line outcomes and taglines sit in `--text-secondary`.
 
 ### Shape and spacing
@@ -116,14 +116,14 @@ Provide all of these by placing the files in the repo folders on disk, then tell
 Motion is subtle, in the site's flat and precise spirit, and every effect is layered through `main.js` and CSS and gated behind `prefers-reduced-motion`. Content is only ever hidden or blurred by JS, so a visitor without JavaScript (or with reduced motion on) always sees the full, static page.
 - **Entrances:** the home hero (eyebrow, name, accent rule, tagline, headshot) and the skills pills fade and rise in a short staggered sequence on load. The about and contact pages reuse the same staggered entrance.
 - **Tile hover previews:** hovering a work tile blurs and dims the image behind a dark wash while a short teaser rises into the frame, and the tile border brightens. Gated to hover-capable devices so it never sticks on touchscreens.
-- **Home "peek" and reveal:** on load, everything below the skills stripe (selected work, just for fun, experience) sits blurred, dimmed, and non-interactive. A fixed `view work` button fades in after the hero settles; the first scroll, or a click of that button (which glides down with a slow eased scroll), clears the peek and reveals each section as it enters view.
+- **Home "peek" and reveal:** on load, everything below the skills stripe (selected work, just for fun, experience) sits blurred, dimmed, and non-interactive. A fixed `View Work` button fades in after the hero settles; the first scroll, or a click of that button (which glides down with a slow eased scroll), clears the peek and reveals each section as it enters view.
 - **Project pages:** each content block fades and rises as it scrolls into view.
 
 ### Accessibility
 - Maintain strong contrast (the tokens above are tuned for it).
 - All images get meaningful alt text.
 - The experience accordion uses real `<button>` elements with `aria-expanded`, keyboard operable.
-- The `view work` cue is a real `<button>`; all motion respects `prefers-reduced-motion`.
+- The `View Work` cue is a real `<button>`; all motion respects `prefers-reduced-motion`.
 
 ---
 
@@ -131,35 +131,35 @@ Motion is subtle, in the site's flat and precise spirit, and every effect is lay
 
 ### Nav (every page)
 - Left: `JW` monogram, weight 500, slightly tracked.
-- Right: monospace lowercase links: `work`, `about`, `résumé`, `contact`.
-  - `work` to `index.html#work`, `about` to `about.html`, `résumé` to `resume.pdf`, `contact` to `contact.html`.
+- Right: monospace Title Case links: `Work`, `About`, `Résumé`, `Contact`.
+  - `Work` to `index.html#work`, `About` to `about.html`, `Résumé` to `resume.pdf`, `Contact` to `contact.html`.
 - The current page's link sits in `--link`; the rest in `--text-secondary` and brighten on hover.
 - Hairline border under the nav.
 
 ### Hero (landing)
-- Eyebrow, monospace lowercase: `mech-eng / georgia tech · atlanta, ga`
+- Eyebrow, monospace Title Case: `Mech-Eng / Georgia Tech · Atlanta, Ga`
 - Name, large sans: `Joel Williams`
 - A short accent rule under the name (about 46px wide, 3px tall, `--accent`).
 - Tagline in `--text-secondary` (see Content).
-- Right column: a headshot block (square, about 220px, `--surface`, hairline border, rounded 8px, holding Joel's photo), then two stacked monospace links beneath it: `linkedin ↗` and `résumé ↓`, both in `--link`.
+- Right column: a headshot block (square, about 220px, `--surface`, hairline border, rounded 8px, holding Joel's photo), then two stacked monospace links beneath it: `LinkedIn ↗` and `Résumé ↓`, both in `--link`.
 - On load, the eyebrow, name, accent rule, tagline, and headshot column fade and rise in a short staggered sequence (see Motion and interaction).
 
 ### Skills highlight stripe
 - A band with a hairline top and bottom border.
-- Small monospace label `skills highlight`, then the skill pills.
+- Small monospace label `Skills Highlight`, then the skill pills.
 - Pills: monospace, `--pill-text`, hairline border, rounded 8px, small padding. They wrap as needed.
 - On load, the pills cascade in one after another as part of the home entrance.
 
 ### Interests stripe (about page)
 - Styled identically to the skills highlight stripe, reusing the same classes: same hairline band, same monospace lowercase label, same bordered pills, same spacing.
-- Label `interests`, then the interest pills.
+- Label `Interests`, then the interest pills.
 
 ### Résumé download button (about and contact pages)
-- A single bordered button: monospace lowercase label `download résumé ↓`, hairline border, rounded like a pill, `--text-secondary` text. The border shifts to `--accent` and the text brightens on hover.
+- A single bordered button: monospace Title Case label `Download Résumé ↓`, hairline border, rounded like a pill, `--text-secondary` text. The border shifts to `--accent` and the text brightens on hover.
 - An `<a href="resume.pdf" download>` so it downloads rather than opening in the browser.
 
 ### Selected work
-- Small monospace section label `selected work`.
+- Small monospace section label `Selected Work`.
 - A featured tile (Focus Puck) as a two-column card: a tall image panel on the left, and on the right a stacked caption (monospace category tag in `--accent`, project name, one-line outcome).
 - Below it, a three-up grid of the other tiles (TVC Mount, Fin Tabs Rocket, Competition Task Robot): each an image area, then a caption with the project name and category tag on one row and the one-line outcome spanning the full width below.
 - Tiles have a hairline border that shifts to `--accent` on hover. On hover the image blurs and dims behind a dark wash while a short teaser rises into the frame (see Motion and interaction).
@@ -167,11 +167,11 @@ Motion is subtle, in the site's flat and precise spirit, and every effect is lay
 - Each tile links to its project page. On the home page, the selected-work grid, the just-for-fun tile, and the experience section start in the blurred, dimmed, non-interactive "peek" state and only become clickable once revealed.
 
 ### Just for fun
-- Small monospace label `just for fun`.
+- Small monospace label `Just For Fun`.
 - A single, lighter horizontal tile for Race Couch (image on the left, text on the right) so it reads as a deliberate personality aside, not a flagship. Links to its project page.
 
 ### Experience accordions
-- Small monospace label `experience`.
+- Small monospace label `Experience`.
 - Each role is a row: a clickable button showing the org and role (sans) on the left, the date range (monospace) on the right, and a chevron (`ti-chevron-down` style) that rotates 180 degrees when open.
 - Collapsed by default. Clicking expands a bulleted list of that role's detail.
 - Rows are separated by hairline borders. Use `aria-expanded` and toggle via `main.js`.
@@ -179,8 +179,8 @@ Motion is subtle, in the site's flat and precise spirit, and every effect is lay
 
 ### Footer (every page)
 - Hairline top border.
-- Left: `© 2026 joel williams` (monospace, `--text-faint`).
-- Right: monospace `--link` links: `email` (mailto:jwilliams812@gatech.edu) and `linkedin`.
+- Left: `© 2026 Joel Williams` (monospace, `--text-faint`).
+- Right: monospace `--link` links: `Email` (mailto:jwilliams812@gatech.edu) and `LinkedIn`.
 
 ### Project page template
 Every project page follows the same skeleton:
@@ -236,7 +236,7 @@ Photography · Video editing · Weightlifting · Basketball · Guitar
 
 Note: the tile titled "Competition Task Robot" is the ME 2110 project (file `projects/me2110.html`); the course context stays in the page metadata line.
 
-Category tags (monospace, `--accent`, shown on each tile): Focus Puck `product design`, TVC Mount `aerospace structures`, Fin Tabs Rocket `systems integration`, Competition Task Robot `mechatronics`, Race Couch `just for fun`.
+Category tags (monospace, `--accent`, Title Case, shown on each tile): Focus Puck `Product Design`, TVC Mount `Aerospace Structures`, Fin Tabs Rocket `Systems Integration`, Competition Task Robot `Mechatronics`, Race Couch `Just For Fun`.
 
 ### 7.4.1 Tile hover teasers (landing)
 Short teaser that rises into each tile on hover:

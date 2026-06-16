@@ -110,7 +110,7 @@ video {
 .section-label {
   font-family: var(--font-mono);
   font-size: 11px;
-  text-transform: lowercase;
+  text-transform: none;
   letter-spacing: 0.08em;
   color: var(--text-faint);
   margin-bottom: 20px;
@@ -178,7 +178,7 @@ video {
 .nav-links a {
   font-family: var(--font-mono);
   font-size: 12px;
-  text-transform: lowercase;
+  text-transform: none;
   letter-spacing: 0.04em;
   color: var(--text-secondary);
 }
@@ -210,7 +210,7 @@ video {
 .hero-eyebrow {
   font-family: var(--font-mono);
   font-size: 12px;
-  text-transform: lowercase;
+  text-transform: none;
   letter-spacing: 0.06em;
   color: var(--text-muted);
   margin-bottom: 16px;
@@ -265,7 +265,7 @@ video {
 .hero-links a {
   font-family: var(--font-mono);
   font-size: 12px;
-  text-transform: lowercase;
+  text-transform: none;
   letter-spacing: 0.04em;
   color: var(--link);
 }
@@ -417,7 +417,7 @@ video {
 .tile-tag {
   font-family: var(--font-mono);
   font-size: 11px;
-  text-transform: lowercase;
+  text-transform: none;
   letter-spacing: 0.05em;
   color: var(--accent);
   white-space: nowrap;
@@ -627,7 +627,7 @@ video {
 .footer-copyright {
   font-family: var(--font-mono);
   font-size: 11px;
-  text-transform: lowercase;
+  text-transform: none;
   letter-spacing: 0.04em;
   color: var(--text-faint);
 }
@@ -640,7 +640,7 @@ video {
 .footer-links a {
   font-family: var(--font-mono);
   font-size: 11px;
-  text-transform: lowercase;
+  text-transform: none;
   letter-spacing: 0.04em;
   color: var(--link);
 }
@@ -891,7 +891,7 @@ video {
   gap: 8px;
   font-family: var(--font-mono);
   font-size: 12px;
-  text-transform: lowercase;
+  text-transform: none;
   letter-spacing: 0.04em;
   color: var(--text-secondary);
   border: 0.5px solid var(--hairline-strong);
@@ -986,7 +986,7 @@ video {
 .scroll-cue-label {
   font-family: var(--font-mono);
   font-size: 11px;
-  text-transform: lowercase;
+  text-transform: none;
   letter-spacing: 0.12em;
 }
 

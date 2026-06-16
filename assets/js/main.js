@@ -54,7 +54,7 @@
     cue.type = "button";
     cue.className = "scroll-cue";
     cue.innerHTML =
-      '<span class="scroll-cue-label">view work</span>' +
+      '<span class="scroll-cue-label">View Work</span>' +
       '<svg class="scroll-cue-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none">' +
       '<path d="M6 10l6 6 6-6" stroke="currentColor" stroke-width="1.6" ' +
       'stroke-linecap="round" stroke-linejoin="round"/></svg>';
