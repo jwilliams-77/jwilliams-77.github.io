@@ -458,7 +458,7 @@ By the final competition we reached the top 16 of 56 teams and placed 11th of 56
 **Title:** Race Couch
 **One-line outcome:** A drivable couch, steered by a game controller.
 **Metadata:** Just For Fun · Wreck Racing, Georgia Tech · Aug 2023 to Dec 2023
-**core skills:** Arduino · C++ · SolidWorks · 3D Printing · Rapid Prototyping · System Integration
+**core skills:** Arduino · C++ · SolidWorks · 3D Printing · Rapid Prototyping · Systems Integration
 
 **(Tone note: this is the lighter, personality piece. Keep it loose and short, more personality than process.)**
 
