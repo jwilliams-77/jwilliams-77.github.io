@@ -1099,7 +1099,6 @@ video {
   .skills-pills .pill:nth-child(10) { animation-delay: 0.96s; }
   .skills-pills .pill:nth-child(11) { animation-delay: 1s; }
   .skills-pills .pill:nth-child(12) { animation-delay: 1.04s; }
-  .skills-pills .pill:nth-child(13) { animation-delay: 1.08s; }
 
   /* about page: same staggered entrance as the home hero */
   .about h1 {
