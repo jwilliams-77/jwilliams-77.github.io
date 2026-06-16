@@ -1,6 +1,6 @@
 # Progress
 
-Last updated: June 15, 2026
+Last updated: June 16, 2026
 
 ## Done
 
@@ -29,7 +29,8 @@ Last updated: June 15, 2026
   - New `contact.html` holds only email and LinkedIn (no GitHub), plus a résumé download button. The `contact` nav link points to it on every page.
   - About page has new two-paragraph copy, a résumé download button, and an `interests` stripe (Photography, Video editing, Weightlifting, Basketball, Guitar) reusing the skills-stripe styling. The old contact block is gone.
   - New `.resume-download` button component (hairline border, mono lowercase `download résumé ↓`, accent on hover), on both About and Contact, links to `resume.pdf` with the `download` attribute.
-- CLAUDE.md fully synced to the built site: new about copy and interests stripe, contact page, résumé button, nav target, the 12-item skills list, robot rename and category tags, the tile hover teasers, and a Motion and interaction subsection. No em dashes anywhere.
+- CLAUDE.md fully synced to the built site: new about copy and interests stripe, contact page, résumé button, nav target, the skills list, robot rename and category tags, the tile hover teasers, and a Motion and interaction subsection. No em dashes anywhere.
+- Polish pass: contact page rebuilt as a centered layout (heading, accent rule, intro line, two side-by-side Email/LinkedIn cards with flat icon chips, centered résumé button); "view work" cue is bright near-white text with no box and a blue hover; tile tease border made an opaque near-white so it reads identically over white-panel and photo tiles. Skills stripe extended with Python (now 13 pills; cascade delay added). Stylesheet at `styles.css?v=18`.
 
 ## Next
 

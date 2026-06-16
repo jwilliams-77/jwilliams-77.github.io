@@ -466,9 +466,11 @@ video {
 }
 
 @media (hover: hover) {
+  /* opaque near-white so the frame reads the same over white-panel and photo
+     tiles (a semi-transparent border composites with the tile's own background) */
   .work-tile:hover .tile-media,
   .fun-tile:hover .tile-media {
-    border-color: rgba(255, 255, 255, 0.3);
+    border-color: var(--text);
   }
 
   .work-tile:hover .tile-media img,
@@ -797,36 +799,89 @@ video {
 }
 
 .contact {
-  padding: 72px 0;
+  padding: 96px 0;
+  text-align: center;
 }
 
 .contact h1 {
-  font-size: 34px;
-  margin-bottom: 10px;
+  font-size: 36px;
+  margin-bottom: 18px;
 }
 
-.contact-links {
+.contact-rule {
+  width: 64px;
+  height: 3px;
+  background: var(--accent);
+  border: none;
+  margin: 0 auto 22px;
+}
+
+.contact-intro {
+  color: var(--text-secondary);
+  font-size: 16px;
+  max-width: 34em;
+  margin: 0 auto 48px;
+}
+
+.contact-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.contact-card {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 10px;
+  flex: 1 1 240px;
+  max-width: 290px;
+  padding: 34px 24px;
+  border: 0.5px solid var(--hairline);
+  border-radius: var(--radius-card);
+  color: inherit;
+  transition: border-color 0.18s ease;
 }
 
-.contact-links a {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  text-transform: lowercase;
-  letter-spacing: 0.04em;
+.contact-card:hover {
+  border-color: var(--accent);
+  text-decoration: none;
+}
+
+.contact-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 6px;
+  border: 0.5px solid var(--hairline-strong);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
   color: var(--link);
-  width: fit-content;
 }
 
-.contact-note {
+.contact-card-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.contact-card-label {
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.contact-card-value {
   font-family: var(--font-mono);
   font-size: 12px;
-  text-transform: lowercase;
-  letter-spacing: 0.04em;
-  color: var(--text-faint);
-  margin: 0 0 16px;
+  letter-spacing: 0.02em;
+  color: var(--text-secondary);
+  word-break: break-word;
 }
 
 /* résumé download button (about and contact pages) */
@@ -857,7 +912,7 @@ video {
 }
 
 .contact .resume-download {
-  margin-top: 24px;
+  margin-top: 44px;
 }
 
 /* --------------------------------------------------------------------------
@@ -911,7 +966,7 @@ video {
   background: none;
   border: none;
   font: inherit;
-  color: var(--text-muted);
+  color: var(--text);
   opacity: 0;
   cursor: pointer;
   pointer-events: none;
@@ -1044,6 +1099,7 @@ video {
   .skills-pills .pill:nth-child(10) { animation-delay: 0.96s; }
   .skills-pills .pill:nth-child(11) { animation-delay: 1s; }
   .skills-pills .pill:nth-child(12) { animation-delay: 1.04s; }
+  .skills-pills .pill:nth-child(13) { animation-delay: 1.08s; }
 
   /* about page: same staggered entrance as the home hero */
   .about h1 {
@@ -1072,19 +1128,25 @@ video {
     animation-delay: 0.1s;
   }
 
-  .contact-note {
-    animation: fadeUp 0.7s ease both;
-    animation-delay: 0.2s;
+  .contact-rule {
+    transform-origin: center;
+    animation: growRule 0.5s ease both;
+    animation-delay: 0.28s;
   }
 
-  .contact-links {
+  .contact-intro {
     animation: fadeUp 0.7s ease both;
     animation-delay: 0.32s;
   }
 
-  .contact .resume-download {
+  .contact-cards {
     animation: fadeUp 0.7s ease both;
     animation-delay: 0.44s;
+  }
+
+  .contact .resume-download {
+    animation: fadeUp 0.7s ease both;
+    animation-delay: 0.56s;
   }
 }
 
