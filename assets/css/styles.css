@@ -667,7 +667,7 @@ video {
 .project-meta {
   font-family: var(--font-mono);
   font-size: 12px;
-  text-transform: lowercase;
+  text-transform: none;
   letter-spacing: 0.04em;
   color: var(--text-muted);
   margin-top: 18px;
@@ -676,7 +676,7 @@ video {
 .project-skills {
   font-family: var(--font-mono);
   font-size: 12px;
-  text-transform: lowercase;
+  text-transform: none;
   letter-spacing: 0.04em;
   color: var(--text-faint);
   margin-top: 8px;

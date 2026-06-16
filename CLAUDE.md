@@ -43,7 +43,7 @@ joelwilliams.github.io/
 - One shared `styles.css` and one `main.js` across all pages for consistency.
 - Use semantic HTML and accessible markup (alt text on all images, buttons for interactive controls, aria attributes on the accordion).
 - Keep every page on the same nav and footer.
-- The stylesheet link on every page carries a cache-busting query (`styles.css?v=N`, currently `v=21`). Bump N whenever `styles.css` or `main.js` changes so browsers do not serve a stale copy.
+- The stylesheet link on every page carries a cache-busting query (`styles.css?v=N`, currently `v=22`). Bump N whenever `styles.css` or `main.js` changes so browsers do not serve a stale copy.
 
 ---
 
@@ -75,7 +75,7 @@ Dark mode only. This is a dark site by design, not a theme toggle.
 
 ### Typography
 - **Sans** for the name, headings, and body: Helvetica Neue, Arial, system sans-serif. Big type (name) at weight 500 with tight letter-spacing (about -0.02em). Section headers can be the same sans.
-- **Monospace, small (11 to 12px)** for metadata, labels, captions, nav links, and date ranges. UI labels use **Title Case** (capitalize the first letter of each word): nav links, the hero eyebrow, section labels (`Skills Highlight`, `Selected Work`, `Just For Fun`, `Experience`, `Interests`), project category tags, the hero and footer links, and the résumé button. Figure captions, project metadata lines, core-skills lines, and date ranges stay lowercase.
+- **Monospace, small (11 to 12px)** for metadata, labels, captions, nav links, and date ranges. UI labels use **Title Case** (capitalize the first letter of each word, keeping acronyms and brand names as-is): nav links, the hero eyebrow, section labels (`Skills Highlight`, `Selected Work`, `Just For Fun`, `Experience`, `Interests`), project category tags, the hero and footer links, the résumé button, and the project metadata and `Core Skills` lines. Only figure captions and the experience date ranges stay lowercase.
 - The name in the hero runs large (about 48px). One-line outcomes and taglines sit in `--text-secondary`.
 
 ### Shape and spacing
@@ -137,7 +137,7 @@ Motion is subtle, in the site's flat and precise spirit, and every effect is lay
 - Hairline border under the nav.
 
 ### Hero (landing)
-- Eyebrow, monospace Title Case: `Mech-Eng / Georgia Tech · Atlanta, Ga`
+- Eyebrow, monospace Title Case: `Mech-Eng / Georgia Tech · Atlanta, GA`
 - Name, large sans: `Joel Williams`
 - A short accent rule under the name (about 46px wide, 3px tall, `--accent`).
 - Tagline in `--text-secondary` (see Content).
@@ -185,7 +185,7 @@ Motion is subtle, in the site's flat and precise spirit, and every effect is lay
 ### Project page template
 Every project page follows the same skeleton:
 1. Nav.
-2. Title (sans), one-line outcome (secondary), metadata line (monospace: discipline · context · timeline · role), and a `core skills` line.
+2. Title (sans), one-line outcome (secondary), metadata line (monospace Title Case: discipline · context · timeline · role), and a `Core Skills` line.
 3. A hero image, rendered at its natural aspect ratio (not cropped into a fixed band).
 4. **The story** section first (the why and the objectives).
 5. Body sections that flex per project, with media between them. Prose sits in a centered, comfortable-measure reading column while figures break out wider; figures can be a single image, a two-up row, a constrained portrait, or a short looping muted video with a poster.
@@ -285,8 +285,8 @@ Short teaser that rises into each tile on hover:
 
 **Title:** Focus Puck
 **One-line outcome:** A focus timer for the desk, engineered for modularity, simple assembly, and intuitive interaction.
-**Metadata:** Product design · Dec 2025 to Jan 2026 · personal project
-**core skills:** SolidWorks · ANSYS FEA · DFAM · Rapid prototyping · 3D printing (Formlabs Form 4 + Bambu X1E) · Mechanical packaging for electronics
+**Metadata:** Product Design · Dec 2025 to Jan 2026 · Personal Project
+**core skills:** SolidWorks · ANSYS FEA · DFAM · Rapid Prototyping · 3D Printing (Formlabs Form 4 + Bambu X1E) · Mechanical Packaging for Electronics
 
 **The story**
 
@@ -334,8 +334,8 @@ If I take it further: add a buzzer so the timer has a voice and not just a light
 
 **Title:** TVC Mount
 **One-line outcome:** A from-scratch thrust-vectoring mount that took a finless rocket from a few degrees of steering to a full ±20° in any direction.
-**Metadata:** Mechatronics & structures · Ramblin' Rocket Club (GNC) · Aug 2024 to Mar 2025
-**core skills:** SolidWorks · Mechatronics integration · Rapid prototyping · 3D printing · FMEA · Design communication
+**Metadata:** Mechatronics & Structures · Ramblin' Rocket Club (GNC) · Aug 2024 to Mar 2025
+**core skills:** SolidWorks · Mechatronics Integration · Rapid Prototyping · 3D Printing · FMEA · Design Communication
 
 **The story**
 
@@ -381,8 +381,8 @@ Assembly was the design's real weak spot. Dialing in the central ball-and-socket
 
 **Title:** Fin Tabs Rocket
 **One-line outcome:** Owning the integration and assembly of a full-scale, fin-tab-steered rocket: the manufacturing plan, the schedule, and the master CAD that kept every subteam in sync.
-**Metadata:** Systems integration & project management · Ramblin' Rocket Club (GNC) · Aug 2025 to Mar 2026 · responsible engineer
-**core skills:** Systems integration · SolidWorks · FEA (ANSYS) · Project management · GD&T · Rapid prototyping
+**Metadata:** Systems Integration & Project Management · Ramblin' Rocket Club (GNC) · Aug 2025 to Mar 2026 · Responsible Engineer
+**core skills:** Systems Integration · SolidWorks · FEA (ANSYS) · Project Management · GD&T · Rapid Prototyping
 
 **The story**
 
@@ -424,8 +424,8 @@ The CDR is complete and component manufacturing is underway. Full integration an
 
 **Title:** Competition Task Robot
 **One-line outcome:** A scrappy, $47 autonomous robot for a Minecraft-themed arena, built fast and iterated faster, that climbed from a last-place sprint finish to the top 16 of 56 teams.
-**Metadata:** Robotics & mechatronics · ME 2110, Georgia Tech · Feb to May 2025 · 4-person team
-**core skills:** SolidWorks · Mechatronics · Rapid prototyping · 3D printing · Laser cutting · Embedded systems
+**Metadata:** Robotics & Mechatronics · ME 2110, Georgia Tech · Feb to May 2025 · 4-Person Team
+**core skills:** SolidWorks · Mechatronics · Rapid Prototyping · 3D Printing · Laser Cutting · Embedded Systems
 
 **The story**
 
@@ -457,7 +457,7 @@ By the final competition we reached the top 16 of 56 teams and placed 11th of 56
 
 **Title:** Race Couch
 **One-line outcome:** A drivable couch, steered by a game controller.
-**Metadata:** Just for fun · Wreck Racing, Georgia Tech · 2023
+**Metadata:** Just For Fun · Wreck Racing, Georgia Tech · 2023
 
 **(Tone note: this is the lighter, personality piece. Keep it loose and short, more personality than process.)**
 
