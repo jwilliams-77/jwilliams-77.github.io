@@ -19,7 +19,7 @@ Last updated: June 16, 2026
   - Race couch warehouse clip re-encoded with a deflicker filter.
   - Skills stripe extended: CATIA, FMEA, Fusion (CAM), C++.
   - "ME 2110 Robot" renamed to "Competition Task Robot" (tile, page title, h1); URL stays `projects/me2110.html`.
-  - Stylesheet links carry a cache-busting version (`styles.css?v=N`, currently v=14). Bump the number whenever styles.css or main.js changes.
+  - Stylesheet links carry a cache-busting version (`styles.css?v=N`, currently v=20). Bump the number whenever styles.css or main.js changes.
 - Motion and interaction pass (all CSS-driven where possible, all gated by `prefers-reduced-motion`):
   - Tile hover preview: image blurs and recedes while a short teaser rises into the frame; teaser copy is in `index.html`. Dimming is done entirely through the overlay so white-panel tiles stay seamless.
   - Home hero + skills stripe have a staggered on-load entrance; the about page reuses the same entrance.
@@ -30,7 +30,7 @@ Last updated: June 16, 2026
   - About page has new two-paragraph copy, a résumé download button, and an `interests` stripe (Photography, Video editing, Weightlifting, Basketball, Guitar) reusing the skills-stripe styling. The old contact block is gone.
   - New `.resume-download` button component (hairline border, mono lowercase `download résumé ↓`, accent on hover), on both About and Contact, links to `resume.pdf` with the `download` attribute.
 - CLAUDE.md fully synced to the built site: new about copy and interests stripe, contact page, résumé button, nav target, the skills list, robot rename and category tags, the tile hover teasers, and a Motion and interaction subsection. No em dashes anywhere.
-- Polish pass: contact page rebuilt as a centered layout (heading, accent rule, intro line, two side-by-side Email/LinkedIn cards with flat icon chips, centered résumé button); "view work" cue is bright near-white text with no box and a blue hover; tile tease border made an opaque near-white so it reads identically over white-panel and photo tiles. Skills stripe extended with Python (12 pills). Stylesheet at `styles.css?v=19`.
+- Polish pass: contact page rebuilt as a centered layout (heading, accent rule, intro line, two side-by-side Email/LinkedIn cards with flat icon chips, centered résumé button); "view work" cue is bright near-white text with no box and a blue hover; tile tease border made an opaque near-white so it reads identically over white-panel and photo tiles. Skills stripe extended with Python and the "Rapid prototyping" pill shortened to "Prototyping" (12 pills). Stylesheet at `styles.css?v=20`.
 
 ## Next
 
