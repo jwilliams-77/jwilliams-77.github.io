@@ -43,7 +43,7 @@ joelwilliams.github.io/
 - One shared `styles.css` and one `main.js` across all pages for consistency.
 - Use semantic HTML and accessible markup (alt text on all images, buttons for interactive controls, aria attributes on the accordion).
 - Keep every page on the same nav and footer.
-- The stylesheet link on every page carries a cache-busting query (`styles.css?v=N`, currently `v=22`). Bump N whenever `styles.css` or `main.js` changes so browsers do not serve a stale copy.
+- The stylesheet link on every page carries a cache-busting query (`styles.css?v=N`, currently `v=23`). Bump N whenever `styles.css` or `main.js` changes so browsers do not serve a stale copy.
 
 ---
 
@@ -172,7 +172,7 @@ Motion is subtle, in the site's flat and precise spirit, and every effect is lay
 
 ### Experience accordions
 - Small monospace label `Experience`.
-- Each role is a row: a clickable button showing the org and role (sans) on the left, the date range (monospace) on the right, and a chevron (`ti-chevron-down` style) that rotates 180 degrees when open.
+- Each role is a row: a clickable button showing the org and role (sans) on the left, the date range (monospace) on the right, and a chevron (`ti-chevron-down` style) that rotates 180 degrees when open. The current internship (Blue Origin) carries a small `In Progress` badge in `--accent` next to the role so it does not read as completed.
 - Collapsed by default. Clicking expands a bulleted list of that role's detail.
 - Rows are separated by hairline borders. Use `aria-expanded` and toggle via `main.js`.
 - Order is fixed: Blue Origin, Valero, Invention Studio, HyTech Racing, Ramblin' Rocket Club (GNC), Kennesaw State.
@@ -214,7 +214,7 @@ Contact details: email jwilliams812@gatech.edu, location Atlanta, GA, LinkedIn a
 ## 7. Content (final and locked, place verbatim)
 
 ### 7.1 Hero tagline
-> I design, prototype, and machine considered hardware, from the desk to orbit.
+> I design, prototype, and machine hardware from the desk to orbit.
 
 ### 7.2 About (two paragraphs)
 > I'm a mechanical engineering student at Georgia Tech with a product designer's instincts and a maker's hands, happiest taking a physical product through the full arc from idea to a finished object I can hold. I'm also pursuing a computer science minor focused on devices, because the work that pulls me in lives where hardware and software meet: products that are mechanically considered and intelligently controlled. Whether I'm running an FEA study, machining a part, or writing the firmware that brings it to life, I like owning the whole path to something real.
