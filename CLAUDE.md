@@ -43,7 +43,7 @@ joelwilliams.github.io/
 - One shared `styles.css` and one `main.js` across all pages for consistency.
 - Use semantic HTML and accessible markup (alt text on all images, buttons for interactive controls, aria attributes on the accordion).
 - Keep every page on the same nav and footer.
-- The stylesheet link on every page carries a cache-busting query (`styles.css?v=N`, currently `v=31`). Bump N whenever `styles.css` or `main.js` changes so browsers do not serve a stale copy.
+- The stylesheet link on every page carries a cache-busting query (`styles.css?v=N`, currently `v=32`). Bump N whenever `styles.css` or `main.js` changes so browsers do not serve a stale copy.
 
 ---
 
