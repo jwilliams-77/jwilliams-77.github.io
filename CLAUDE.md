@@ -43,7 +43,7 @@ joelwilliams.github.io/
 - One shared `styles.css` and one `main.js` across all pages for consistency.
 - Use semantic HTML and accessible markup (alt text on all images, buttons for interactive controls, aria attributes on the accordion).
 - Keep every page on the same nav and footer.
-- The stylesheet link on every page carries a cache-busting query (`styles.css?v=N`, currently `v=23`). Bump N whenever `styles.css` or `main.js` changes so browsers do not serve a stale copy.
+- The stylesheet link on every page carries a cache-busting query (`styles.css?v=N`, currently `v=31`). Bump N whenever `styles.css` or `main.js` changes so browsers do not serve a stale copy.
 
 ---
 
@@ -118,6 +118,7 @@ Motion is subtle, in the site's flat and precise spirit, and every effect is lay
 - **Tile hover previews:** hovering a work tile blurs and dims the image behind a dark wash while a short teaser rises into the frame, and the tile border brightens. Gated to hover-capable devices so it never sticks on touchscreens.
 - **Home "peek" and reveal:** on load, everything below the skills stripe (selected work, just for fun, experience) sits blurred, dimmed, and non-interactive. A fixed `View Work` button fades in after the hero settles; the first scroll, or a click of that button (which glides down with a slow eased scroll), clears the peek and reveals each section as it enters view.
 - **Project pages:** each content block fades and rises as it scrolls into view.
+- **Project preview modal:** clicking a work tile (or the Race Couch tile) opens an in-page modal, a skimmable mini project page, instead of jumping straight to the full page. The frosted backdrop fades in, the dialog rises in, and the cloned content reuses the same scroll-reveal as it scrolls within the dialog. See the Project preview modal component in section 5.
 
 ### Accessibility
 - Maintain strong contrast (the tokens above are tuned for it).
@@ -164,11 +165,19 @@ Motion is subtle, in the site's flat and precise spirit, and every effect is lay
 - Below it, a three-up grid of the other tiles (TVC Mount, Fin Tabs Rocket, Competition Task Robot): each an image area, then a caption with the project name and category tag on one row and the one-line outcome spanning the full width below.
 - Tiles have a hairline border that shifts to `--accent` on hover. On hover the image blurs and dims behind a dark wash while a short teaser rises into the frame (see Motion and interaction).
 - Per-tile image fit varies: photos fill the tile (cover), transparent CAD renders are shown whole on a white panel.
-- Each tile links to its project page. On the home page, the selected-work grid, the just-for-fun tile, and the experience section start in the blurred, dimmed, non-interactive "peek" state and only become clickable once revealed.
+- Each tile opens a project preview modal (a skimmable mini project page with a `Read More` link to the full page, see the Project preview modal component below); the tile's `href` still points at the project page as a no-JS fallback. On the home page, the selected-work grid, the just-for-fun tile, and the experience section start in the blurred, dimmed, non-interactive "peek" state and only become clickable once revealed.
 
 ### Just for fun
 - Small monospace label `Just For Fun`.
 - A single, lighter horizontal tile for Race Couch (image on the left, text on the right) so it reads as a deliberate personality aside, not a flagship. Links to its project page.
+
+### Project preview modal
+- Clicking any work tile (and the Race Couch tile) opens a shared in-page modal instead of navigating: a concise, skimmable mini project page so a recruiter can get the gist before committing to the full page. The viewing layers are: hover teaser, then click to open the preview modal, then `Read More` to the full page.
+- Per-project content lives in a hidden `<template>` in `index.html` and is cloned into one shared modal shell by `main.js`. It reuses the project-page classes (category tag, title, one-line outcome, metadata, `Core Skills`, hero, sections, figures, captions) and favors real photos and the existing looping videos, with CAD secondary.
+- Sections are short and skimmable: `Overview`, then for the design-heavy projects a `Design intent` section, then `What I did` and `Outcome`. Copy is a truncated, recruiter-skim version of the full page, not verbatim.
+- The dialog is closed by a top-right close button, a click on the backdrop, or Escape; focus moves to the close button on open and returns to the originating tile on close; body scroll locks while the modal is open.
+- A pinned action bar at the bottom of the dialog holds the `Read More` link to the full project page. Its top edge is feathered frosted glass (the same blur and dim as the home peek), so content dissolves under it rather than ending on a hard line. The link is centered, bold, and carries a gently oscillating arrow, matching the `View Work` cue treatment.
+- All motion (frosted-backdrop fade-in, dialog entrance, in-dialog scroll-reveal, arrow oscillation) is gated behind `prefers-reduced-motion`.
 
 ### Experience accordions
 - Small monospace label `Experience`.

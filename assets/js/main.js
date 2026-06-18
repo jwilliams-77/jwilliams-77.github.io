@@ -115,3 +115,138 @@
     window.addEventListener("scroll", startReveal, { passive: true });
   }
 })();
+
+// Project preview modal: clicking a work tile opens an in-page "mini project
+// page" cloned from a per-project <template>, instead of navigating straight to
+// the full page. Tiles keep their real href, so without JS (or when a project
+// has no template yet) the click just follows the link. Content reuses the
+// project-page classes and the same .reveal scroll animation, scoped to the
+// dialog's own scroll area. All gated behind reduced motion.
+(function () {
+  var overlay = document.getElementById("project-modal");
+  if (!overlay) return;
+  var tiles = document.querySelectorAll(".work-tile, .fun-tile");
+  if (!tiles.length) return;
+
+  var dialog = overlay.querySelector(".modal-dialog");
+  var body = overlay.querySelector(".modal-body");
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var lastFocused = null;
+  var closeTimer = null;
+
+  var revealObserver =
+    !reduce && "IntersectionObserver" in window
+      ? new IntersectionObserver(
+          function (entries, obs) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                obs.unobserve(entry.target);
+              }
+            });
+          },
+          { root: body, threshold: 0.08 }
+        )
+      : null;
+
+  // "projects/focus-puck.html" -> "focus-puck"
+  var keyFromHref = function (href) {
+    var match = href && href.match(/projects\/([^\/]+)\.html/);
+    return match ? match[1] : null;
+  };
+
+  var openModal = function (tile) {
+    var key = keyFromHref(tile.getAttribute("href"));
+    if (!key) return false;
+    var template = document.getElementById("modal-" + key);
+    if (!template) return false; // no preview built yet: let the link navigate
+
+    lastFocused = tile;
+    body.innerHTML = "";
+    body.appendChild(template.content.cloneNode(true));
+    body.scrollTop = 0;
+
+    var title = body.querySelector(".project-title");
+    dialog.setAttribute("aria-label", title ? title.textContent : "Project preview");
+
+    // point the pinned "Read More" bar at this project's full page
+    var readmore = overlay.querySelector(".modal-readmore");
+    if (readmore) readmore.setAttribute("href", "projects/" + key + ".html");
+
+    if (revealObserver) {
+      Array.prototype.slice
+        .call(body.querySelectorAll(".modal-article > *"))
+        .forEach(function (block) {
+          block.classList.add("reveal");
+          revealObserver.observe(block);
+        });
+    }
+
+    overlay.hidden = false;
+    document.body.classList.add("modal-open");
+    // two frames so the browser registers the starting state before transitioning
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        overlay.classList.add("is-open");
+      });
+    });
+
+    var closeBtn = overlay.querySelector(".modal-close");
+    if (closeBtn) closeBtn.focus();
+    return true;
+  };
+
+  var closeModal = function () {
+    if (overlay.hidden) return;
+    overlay.classList.remove("is-open");
+    document.body.classList.remove("modal-open");
+    var finish = function () {
+      overlay.hidden = true;
+      body.innerHTML = "";
+      if (lastFocused) {
+        lastFocused.focus();
+        lastFocused = null;
+      }
+    };
+    if (reduce) {
+      finish();
+    } else {
+      clearTimeout(closeTimer);
+      closeTimer = setTimeout(finish, 360);
+    }
+  };
+
+  tiles.forEach(function (tile) {
+    tile.addEventListener("click", function (ev) {
+      // let modified clicks (open in new tab, etc.) follow the link as normal
+      if (ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey || ev.button !== 0) {
+        return;
+      }
+      if (openModal(tile)) ev.preventDefault();
+    });
+  });
+
+  overlay.addEventListener("click", function (ev) {
+    // closest() so clicks on the SVG inside the close button still match
+    if (ev.target.closest("[data-modal-close]")) closeModal();
+  });
+
+  document.addEventListener("keydown", function (ev) {
+    if (overlay.hidden) return;
+    if (ev.key === "Escape") {
+      closeModal();
+    } else if (ev.key === "Tab") {
+      var focusables = dialog.querySelectorAll("a[href], button:not([disabled])");
+      if (!focusables.length) return;
+      var first = focusables[0];
+      var last = focusables[focusables.length - 1];
+      if (ev.shiftKey && document.activeElement === first) {
+        ev.preventDefault();
+        last.focus();
+      } else if (!ev.shiftKey && document.activeElement === last) {
+        ev.preventDefault();
+        first.focus();
+      }
+    }
+  });
+})();

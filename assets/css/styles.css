@@ -714,6 +714,11 @@ video {
   margin: 0 0 24px;
 }
 
+/* the hero image is centered, so center any caption under it too */
+.project-hero figcaption {
+  text-align: center;
+}
+
 .project-hero img {
   display: block;
   width: auto;
@@ -1165,6 +1170,201 @@ video {
   }
 }
 
+/* --------------------------------------------------------------------------
+   Project preview modal (home page): a skimmable mini project page that opens
+   over the home page. Content is cloned from a per-project <template> and
+   reuses the project-page classes; only a few modal-scoped tweaks live here.
+   -------------------------------------------------------------------------- */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+/* class display:flex beats the hidden attribute, so re-hide it explicitly */
+.modal-overlay[hidden] {
+  display: none;
+}
+
+/* the blur is constant; we fade the whole frosted backdrop in via opacity, which
+   interpolates smoothly (animating the blur radius itself snaps/janks) */
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 6, 10, 0.72);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.modal-overlay.is-open .modal-backdrop {
+  opacity: 1;
+}
+
+.modal-dialog {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 860px;
+  max-height: 92vh;
+  background: var(--bg);
+  border: 0.5px solid var(--hairline-strong);
+  border-radius: var(--radius-card);
+  overflow: hidden; /* clip the frosted footer to the rounded corners */
+  opacity: 0;
+  transform: translateY(16px) scale(0.985);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.modal-overlay.is-open .modal-dialog {
+  opacity: 1;
+  transform: none;
+}
+
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  background: var(--bg);
+  border: 0.5px solid var(--hairline);
+  border-radius: 50%;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.modal-close:hover {
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+.modal-close svg {
+  width: 15px;
+  height: 15px;
+}
+
+.modal-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  /* extra bottom padding so content clears the frosted footer it scrolls under */
+  padding: 44px 48px 92px;
+}
+
+/* cloned content reuses .project-* classes; modal-scoped sizing tweaks only */
+.modal-article .tile-tag {
+  display: inline-block;
+  margin-bottom: 14px;
+}
+
+.modal-article .project-title {
+  font-size: 28px;
+}
+
+.modal-article .project-hero {
+  margin-top: 24px;
+}
+
+.modal-article .project-section {
+  margin-top: 36px;
+}
+
+.modal-article .project-section h3 {
+  font-size: 19px;
+  margin-bottom: 14px;
+}
+
+/* pinned action bar over the bottom of the dialog: content scrolls beneath it
+   behind the same frosted blur+dim used in the home "peek", so "Read More" is
+   never missed and the strip reads as glass rather than an opaque black bar */
+.modal-footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  padding: 40px 48px 16px;
+  background: rgba(10, 12, 21, 0.6);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  /* feather the top edge so the frost dissolves into the content instead of
+     ending on a hard line; masks the blur and dim together */
+  -webkit-mask-image: linear-gradient(to top, #000 48%, transparent);
+  mask-image: linear-gradient(to top, #000 48%, transparent);
+}
+
+/* "Read More": a bolder, larger take on the "View Work" cue treatment, centered,
+   with an arrow that gently oscillates left-right like that cue's arrow */
+.modal-readmore {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.modal-readmore:hover {
+  color: var(--link);
+  text-decoration: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .modal-readmore .readmore-arrow {
+    animation: readmoreNudge 1.6s ease-in-out infinite;
+  }
+}
+
+@keyframes readmoreNudge {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(4px); }
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal-dialog,
+  .modal-backdrop {
+    transition: none;
+  }
+
+  .modal-dialog {
+    transform: none;
+  }
+
+  .modal-backdrop,
+  .modal-footer {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .modal-readmore .readmore-arrow {
+    animation: none;
+  }
+}
+
 @media (max-width: 700px) {
   .hero {
     padding: 56px 0 48px;
@@ -1213,6 +1413,11 @@ video {
     margin-top: 2px;
   }
 
+  /* Nudge the status badge down a hair so its top edge clears the role text */
+  .role-tag {
+    transform: translateY(2px);
+  }
+
   .project-hero img {
     max-height: 340px;
   }
@@ -1227,6 +1432,22 @@ video {
 
   .about-grid {
     grid-template-columns: 1fr;
+  }
+
+  .modal-overlay {
+    padding: 16px 12px;
+  }
+
+  .modal-dialog {
+    max-height: 92vh;
+  }
+
+  .modal-body {
+    padding: 40px 22px 28px;
+  }
+
+  .modal-footer {
+    padding: 34px 22px 14px;
   }
 
   .site-footer .container {

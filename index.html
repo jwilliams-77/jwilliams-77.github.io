@@ -10,7 +10,7 @@
   <meta property="og:description" content="I design, prototype, and machine hardware from the desk to orbit.">
   <meta property="og:image" content="https://jwilliams-77.github.io/assets/images/og.png">
   <meta property="og:url" content="https://jwilliams-77.github.io/">
-  <link rel="stylesheet" href="assets/css/styles.css?v=23">
+  <link rel="stylesheet" href="assets/css/styles.css?v=31">
 </head>
 <body>
 
@@ -122,7 +122,7 @@
         <div class="tile-caption">
           <div class="tile-caption-head">
             <span class="tile-title">Race Couch</span>
-            <span class="tile-tag">Just For Fun</span>
+            <span class="tile-tag">Controls and Electronics</span>
           </div>
           <p class="tile-outcome">A drivable couch steered by a game controller, the kind of fun, random project that sparks people's joy for engineering.</p>
         </div>
@@ -243,6 +243,249 @@
       </div>
     </div>
   </section>
+
+  <!-- Project preview modal: a single shared shell. Per-project content lives in
+       the <template> blocks below and is cloned in by main.js on tile click. -->
+  <div class="modal-overlay" id="project-modal" hidden>
+    <div class="modal-backdrop" data-modal-close></div>
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-label="Project preview">
+      <button class="modal-close" type="button" aria-label="Close preview" data-modal-close>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+      <div class="modal-body"></div>
+      <div class="modal-footer">
+        <a class="modal-readmore" href="#"><span>Read More</span><span class="readmore-arrow" aria-hidden="true">&rarr;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <template id="modal-focus-puck">
+    <article class="modal-article">
+      <header class="modal-header">
+        <span class="tile-tag">Product Design</span>
+        <h2 class="project-title">Focus Puck</h2>
+        <p class="project-outcome">A focus timer for the desk, engineered for modularity, simple assembly, and intuitive interaction.</p>
+        <p class="project-meta">Product Design · Dec 2025 to Jan 2026 · Personal Project</p>
+        <p class="project-skills"><span class="skills-label">Core Skills</span> · SolidWorks · ANSYS FEA · DFMA · Rapid Prototyping · 3D Printing (Formlabs Form 4 + Bambu X1E) · Mechanical Packaging for Electronics</p>
+      </header>
+
+      <figure class="project-hero">
+        <img src="assets/images/focus-puck/focus-puck-5.jpg" alt="CAD render of the assembled Focus Puck, a rounded black puck with a fingerprint pattern engraved in its center cap">
+      </figure>
+
+      <section class="project-section">
+        <h3>Overview</h3>
+        <p>Over winter break I gave myself one rule: take a product from an idea in my head to a finished, working object, entirely my own from end to end. The result was Focus Puck, a single-purpose desk timer for focused work. The goal was a compact, desk-friendly enclosure that packaged the Arduino, sensors, and perfboard cleanly, with DFMA features throughout so I could print and iterate fast.</p>
+      </section>
+
+      <figure class="project-figure figure--portrait">
+        <img src="assets/images/focus-puck/focus-puck-2.jpg" alt="Exploded CAD view of the Focus Puck, from the cap and diffuser down through the electronics trays to the shell and rubber feet">
+        <figcaption class="media-caption">the modular tray stack, exploded</figcaption>
+      </figure>
+
+      <section class="project-section">
+        <h3>Design intent</h3>
+        <p>The driving principle was that reaching for the timer should never become its own distraction, so the entire interaction lives in one spot: a fingerprint engraved over a capacitive touch sensor, read through three gestures and a ring of light. A tap wakes it, a tap-and-hold fills the ring two minutes per light, and a double tap starts the countdown. Inside, a modular stack of trays keeps the electronics rigid and serviceable, located on bosses in the shell, with heat-set inserts and counterbored rubber feet hiding every fastener so it reads as one clean object.</p>
+      </section>
+
+      <section class="project-section">
+        <h3>What I did</h3>
+        <p>To keep all of that printable and serviceable, I leaned on DFMA throughout: a diffuser that twist-locks down on dovetail joints with no screws, and parts shaped around the print bed rather than fought onto it. I split the work across two machines on purpose, a Bambu X1E for fast, cheap iteration and a Formlabs Form 4 where surface finish and final fit mattered, then validated the shell with ANSYS FEA backed by physical drop tests.</p>
+      </section>
+
+      <figure class="project-figure figure--small">
+        <img src="assets/images/focus-puck/focus-puck-3.jpg" alt="3D-printed Focus Puck parts on a workbench: black shell, LED ring, white diffuser, and the Arduino tray stack">
+        <figcaption class="media-caption">printed parts ready for assembly</figcaption>
+      </figure>
+
+      <section class="project-section">
+        <h3>Outcome</h3>
+        <p>A modular, DFMA-optimized enclosure that's quick to iterate and quick to service, a repeatable two-machine manufacturing workflow, and a device that assembles start to finish in under two minutes.</p>
+      </section>
+    </article>
+  </template>
+
+  <template id="modal-tvc-mount">
+    <article class="modal-article">
+      <header class="modal-header">
+        <span class="tile-tag">Aerospace Structures</span>
+        <h2 class="project-title">TVC Mount</h2>
+        <p class="project-outcome">A from-scratch thrust-vectoring mount that took a finless rocket from a few degrees of steering to a full ±20° in any direction.</p>
+        <p class="project-meta">Mechatronics &amp; Structures · Ramblin' Rocket Club (GNC) · Aug 2024 to Mar 2025</p>
+        <p class="project-skills"><span class="skills-label">Core Skills</span> · SolidWorks · Mechatronics Integration · Rapid Prototyping · 3D Printing · FMEA · Design Communication</p>
+      </header>
+
+      <figure class="project-hero">
+        <img src="assets/images/tvc-mount/tvc-mount-2.jpg" alt="The assembled TVC mount held in hand: orange PETG top plate with micro servos, steel ball-socket linkages, white resin socket, and blue motor sleeve">
+      </figure>
+
+      <section class="project-section">
+        <h3>Overview</h3>
+        <p>A finless rocket has nothing passive to keep it pointed straight, so it has to steer the engine itself. Handed the previous year's thrust-vector-control mount, my teammate and I chose to start over from scratch. The old design managed only a few degrees of deflection; our target was a full ±20° in any direction inside the same 3-inch body tube, built mostly from 3D-printed and off-the-shelf parts.</p>
+      </section>
+
+      <figure class="project-figure figure--small">
+        <img src="assets/images/tvc-mount/tvc-mount-1.jpg" alt="Labeled exploded CAD view of the TVC mount: FDM top plate and motor sleeve, COTS servos and linkage rods, and the resin-printed central ball and socket">
+        <figcaption class="media-caption">every part of the mount, labeled</figcaption>
+      </figure>
+
+      <section class="project-section">
+        <h3>Design intent</h3>
+        <p>Every decision was boxed in by the 3-inch body tube, so the design had to earn its ±20° inside a tight envelope. The breakthrough was abandoning the traditional ringed gimbal for a central ball-and-socket joint, with each servo driving one axis through its own linkage so pitch and yaw stay uncoupled instead of fighting each other, which is where most of the new range came from. A preliminary design review drove one more call: standing the servos vertically on smaller micro servos, in line with the pitch and yaw axes, which fit the cramped tube and made the assembly far easier to build and service.</p>
+      </section>
+
+      <section class="project-section">
+        <h3>What I did</h3>
+        <p>I split materials by job: PETG for the structural parts that take heat and load, and resin on a Formlabs Form 4 for the ball joint so it glides with low friction. Each round of static fires and launches then taught us where to reinforce, and I used slicer modifiers to locally thicken the walls and infill exactly where stress concentrated, plus add material where the ball joint threaded in.</p>
+      </section>
+
+      <figure class="project-figure figure--portrait">
+        <video autoplay muted loop playsinline preload="metadata" poster="assets/videos/tvc-mount/tvc-mount-poster.jpg">
+          <source src="assets/videos/tvc-mount/tvc-mount-loop.mp4" type="video/mp4">
+        </video>
+        <figcaption class="media-caption">bench-testing the mount's actuation</figcaption>
+      </figure>
+
+      <section class="project-section">
+        <h3>Outcome</h3>
+        <p>The mount reached ±20° of motion in any direction, a large jump from the previous design's few degrees, and held up across the rocket's static fires and three launches. It became the second flown iteration of the GNC project's TVC system and the basis for a paper we submitted to the AIAA.</p>
+      </section>
+    </article>
+  </template>
+
+  <template id="modal-fin-tabs">
+    <article class="modal-article">
+      <header class="modal-header">
+        <span class="tile-tag">Systems Integration</span>
+        <h2 class="project-title">Fin Tabs Rocket</h2>
+        <p class="project-outcome">Owning the integration and assembly of a full-scale, fin-tab-steered rocket: the manufacturing plan, the schedule, and the master CAD that kept every subteam in sync.</p>
+        <p class="project-meta">Systems Integration &amp; Project Management · Ramblin' Rocket Club (GNC) · Aug 2025 to Mar 2026 · Responsible Engineer</p>
+        <p class="project-skills"><span class="skills-label">Core Skills</span> · Systems Integration · SolidWorks · FEA (ANSYS) · Project Management · GD&amp;T · Rapid Prototyping</p>
+      </header>
+
+      <figure class="project-hero">
+        <img src="assets/images/fin-tabs/fin-tabs-hero.jpg" alt="Labeled CAD diagram of the full rocket: nosecone, main parachute, avionics bay, drogue chute, motor assembly, and the fin tabs actuation assembly">
+        <figcaption class="media-caption">the master assembly, every subsystem in one model</figcaption>
+      </figure>
+
+      <section class="project-section">
+        <h3>Overview</h3>
+        <p>After a year of hands-on design on the TVC mount, I took the Responsible Engineer role on the Fin Tabs rocket, a full-scale vehicle close to 60 pounds that steers through small control surfaces near its aft fins. My job wasn't to design every subsystem. It was to make all of them, nosecone, recovery, avionics, camera bay, motor, and the fin-tab assembly, integrate into one buildable, serviceable rocket within a few hours, with nothing interfering with the fin-tab actuation.</p>
+      </section>
+
+      <figure class="project-figure figure--small">
+        <img src="assets/images/fin-tabs/fin-tabs-1.jpg" alt="CAD closeup of the rocket's aft end, the fins and fin-tab actuation gearing visible through a transparent body tube">
+        <figcaption class="media-caption">the fin-tab actuation assembly in the aft end</figcaption>
+      </figure>
+
+      <section class="project-section">
+        <h3>What I did</h3>
+        <p>I pulled every subsystem into a single top-down SolidWorks master assembly that became the reference each subteam checked their fit against, applying GD&amp;T to the interfaces so parts came together first-pass. A lot of the role was coordination: consolidating each team's CAD into the master model, running mass and center-of-gravity analysis on the full rocket, and managing the dependency chain when one subsystem was blocked. Applying DFMA, I confirmed six radial screws carried the load where the design called for eight, for a simpler hole diagram and a faster build with no loss of margin. I also owned the recovery analysis, sizing the bulkhead U-bolts and radial screws to a factor of safety of 3.</p>
+      </section>
+
+      <figure class="project-figure figure--portrait">
+        <img src="assets/images/fin-tabs/fin-tabs-2.jpg" alt="CAD render of the full rocket assembly standing vertically, body tubes and bulkheads stacked from the eyebolt at the top down to the fins">
+      </figure>
+
+      <section class="project-section">
+        <h3>Outcome</h3>
+        <p>I built and presented the Critical Design Review to the GNC leads. The CDR is complete and component manufacturing is underway; full integration and assembly, the part I own, is slated for early Fall 2026, when the subsystems come together into the vehicle for the first time. I'll update this once it flies.</p>
+      </section>
+    </article>
+  </template>
+
+  <template id="modal-me2110">
+    <article class="modal-article">
+      <header class="modal-header">
+        <span class="tile-tag">Mechatronics</span>
+        <h2 class="project-title">Competition Task Robot</h2>
+        <p class="project-outcome">A scrappy, $47 autonomous robot for a Minecraft-themed arena, built fast and iterated faster, that climbed from a last-place sprint finish to the top 16 of 56 teams.</p>
+        <p class="project-meta">Robotics &amp; Mechatronics · ME 2110, Georgia Tech · Feb to May 2025 · 4-Person Team</p>
+        <p class="project-skills"><span class="skills-label">Core Skills</span> · SolidWorks · Mechatronics · Rapid Prototyping · 3D Printing · Laser Cutting · Embedded Systems</p>
+      </header>
+
+      <figure class="project-hero">
+        <img src="assets/images/me2110/me2110-hero.jpg" alt="The four-person team in matching Hypixel shirts standing with the robot and design poster at the competition">
+      </figure>
+
+      <section class="project-section">
+        <h3>Overview</h3>
+        <p>ME 2110 is Georgia Tech's design-build-compete course: one semester to take an autonomous machine from nothing to a competition floor, with graded sprints that force working hardware long before you feel ready. The Minecraft-themed arena packed several point-scoring tasks into a single 40-second autonomous run, all built from a provided kit on a budget under $120. Our four-person team built a robot we called Hypixel; I owned the mob-knocker arm and the End Crystal lift end to end.</p>
+      </section>
+
+      <figure class="project-figure figure--small">
+        <img src="assets/images/me2110/me2110-3.jpg" alt="The Hypixel robot in front of its tri-fold design poster covering the drivetrain, mob knockers, wolf bone slide, and End Crystal lift">
+        <figcaption class="media-caption">the design poster and the final robot</figcaption>
+      </figure>
+
+      <section class="project-section">
+        <h3>Design intent</h3>
+        <p>The whole philosophy was the simplest mechanism that could do the job, which is exactly what a sub-$120 budget and a 40-second clock reward. A single motor drove the rear wheels through a 3:5 gear ratio, trading speed for the torque to haul every subsystem around. My mob-knocker arms rode on 3D-printed pivots, held in tension by rubber bands against a piston-pinned stopper, so firing the piston let them snap out and clear the home zone; the End Crystal lift was a motor-driven arm carrying a solenoid-pin claw that raised the crystal about thirty inches.</p>
+      </section>
+
+      <section class="project-section">
+        <h3>What I did</h3>
+        <p>We resisted gluing parts together and started with structure: customer needs, a function tree, and weighted decision matrices that pointed us to a mobile, drivetrain-based design. The whole robot came in at $46.60, roughly 61% under the cap, built from laser-cut MDF, 3D-printed PLA and TPU, and rubber bands. Then we iterated hard: last place and a single point in the first sprint, fixed with changes as simple as a larger wheel radius to clear a bump, up to fourth by the second.</p>
+      </section>
+
+      <figure class="project-figure">
+        <video autoplay muted loop playsinline preload="metadata" poster="assets/videos/me2110/me2110-poster.jpg">
+          <source src="assets/videos/me2110/me2110-loop.mp4" type="video/mp4">
+        </video>
+        <figcaption class="media-caption">a competition run</figcaption>
+      </figure>
+
+      <section class="project-section">
+        <h3>Outcome</h3>
+        <p>By the final competition we reached the top 16 of 56 teams and placed 11th of 56 in the design review. The mob-knocker arm I owned scored in every single round. The lesson of the whole class in miniature: you cannot perfect everything in a semester, so you make the most important things reliable and you ship.</p>
+      </section>
+    </article>
+  </template>
+
+  <template id="modal-race-couch">
+    <article class="modal-article">
+      <header class="modal-header">
+        <span class="tile-tag">Controls and Electronics</span>
+        <h2 class="project-title">Race Couch</h2>
+        <p class="project-outcome">A drivable couch, steered by a game controller.</p>
+        <p class="project-meta">Controls and Electronics · Wreck Racing, Georgia Tech · Aug 2023 to Dec 2023</p>
+        <p class="project-skills"><span class="skills-label">Core Skills</span> · Arduino · C++ · SolidWorks · 3D Printing · Rapid Prototyping · Systems Integration</p>
+      </header>
+
+      <figure class="project-hero">
+        <img src="assets/images/race-couch/race-couch-hero.jpg" alt="The welded steel couch chassis on six wheels in the shop, with a PVC steering frame and wiring in place">
+      </figure>
+
+      <section class="project-section">
+        <h3>Overview</h3>
+        <p>This was my first taste of engineering outside a classroom: a couch you could actually drive. I took on the controls, turning a game controller into a way to pilot a piece of furniture. The fun lived in the handful of small design problems it took to get there.</p>
+      </section>
+
+      <figure class="project-figure figure--portrait">
+        <video autoplay muted loop playsinline preload="metadata" poster="assets/videos/race-couch/race-couch-poster-2.jpg">
+          <source src="assets/videos/race-couch/race-couch-loop-2.mp4" type="video/mp4">
+        </video>
+        <figcaption class="media-caption">first wireless drives of the bare chassis</figcaption>
+      </figure>
+
+      <section class="project-section">
+        <h3>What I did</h3>
+        <p>After weighing a Wii remote, a GameCube controller, and an arcade joystick, we landed on a wireless PS4 controller. The couch drives like a tank, with no steering wheel, just different power sent to the left and right wheels, so the core problem was mapping a thumbstick to the right power split. Cramming throttle and steering onto one stick felt clumsy, so I split them: the left stick became pure throttle and the right stick handled steering. That separation is what made the couch genuinely intuitive to drive.</p>
+      </section>
+
+      <figure class="project-figure figure--portrait">
+        <video autoplay muted loop playsinline preload="metadata" poster="assets/videos/race-couch/race-couch-poster-1.jpg">
+          <source src="assets/videos/race-couch/race-couch-loop-1.mp4" type="video/mp4">
+        </video>
+        <figcaption class="media-caption">the couch, very much drivable</figcaption>
+      </figure>
+
+      <section class="project-section">
+        <h3>Outcome</h3>
+        <p>I didn't have much formal engineering behind me yet, which was the whole point. Learning how broad mechanical engineering really is on something as gloriously goofy as a motorized couch is what made it stick. It is the project that made me want more.</p>
+      </section>
+    </article>
+  </template>
 
   <footer class="site-footer">
     <div class="container">
