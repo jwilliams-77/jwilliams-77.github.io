@@ -747,6 +747,10 @@ video {
 .project-hero img {
   display: block;
   width: auto;
+  /* height:auto so the width/height attributes (which set the aspect ratio) are
+     not treated as a fixed height; without it the image squishes when max-width
+     binds on mobile while the attribute height stays fixed */
+  height: auto;
   max-width: 100%;
   max-height: 540px;
   margin: 0 auto;
