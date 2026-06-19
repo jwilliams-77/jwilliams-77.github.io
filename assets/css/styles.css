@@ -1256,7 +1256,8 @@ video {
 .modal-close {
   position: absolute;
   top: 14px;
-  right: 14px;
+  /* clears the modal body's scrollbar gutter on desktop (mobile resets below) */
+  right: 22px;
   z-index: 2;
   display: flex;
   align-items: center;
@@ -1483,6 +1484,11 @@ body.modal-open {
 
   .modal-footer {
     padding: 34px 22px 14px;
+  }
+
+  /* no persistent scrollbar gutter on touch, so keep the close button in the corner */
+  .modal-close {
+    right: 14px;
   }
 
   .site-footer .container {
