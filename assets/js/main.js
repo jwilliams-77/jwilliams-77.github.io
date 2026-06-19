@@ -186,6 +186,15 @@
     // reset scroll now that the dialog is visible and has layout; doing this while
     // it was still hidden is a no-op and the browser restores the old position
     body.scrollTop = 0;
+
+    // iOS will not autoplay a video cloned from a <template> on its own, so set
+    // muted as a property and kick play() off here, still inside the click gesture
+    Array.prototype.slice.call(body.querySelectorAll("video")).forEach(function (v) {
+      v.muted = true;
+      var playing = v.play();
+      if (playing && typeof playing.catch === "function") playing.catch(function () {});
+    });
+
     // two frames so the browser registers the starting state before transitioning
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
