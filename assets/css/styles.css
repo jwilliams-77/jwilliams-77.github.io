@@ -44,6 +44,9 @@
 
 html {
   scroll-behavior: smooth;
+  /* thin, translucent scrollbar across the whole site (Firefox) */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.16) transparent;
 }
 
 body {
@@ -55,6 +58,28 @@ body {
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+/* and the same subtle, inset scrollbar in WebKit/Blink, everywhere it scrolls */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.26);
+  background-clip: padding-box;
 }
 
 h1,
@@ -1236,15 +1261,15 @@ video {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
+  width: 30px;
+  height: 30px;
   padding: 0;
   background: var(--bg);
   border: 0.5px solid var(--hairline);
   border-radius: 50%;
   color: var(--text-secondary);
   cursor: pointer;
-  transition: color 0.2s ease, border-color 0.2s ease;
+  transition: color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   /* no translucent tap flash on iOS; the focus ring below is the opaque cue */
   -webkit-tap-highlight-color: transparent;
 }
@@ -1254,16 +1279,16 @@ video {
   border-color: var(--accent);
 }
 
-/* opaque accent focus ring (replaces the browser's translucent default, which
-   showed as a faint blue ring when the button is focused on open, esp. on iOS) */
+/* opaque accent focus ring, drawn as a box-shadow flush against the button so it
+   has no transparent offset gap for page content to show through */
 .modal-close:focus {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
+  outline: none;
+  box-shadow: 0 0 0 2px var(--accent);
 }
 
 .modal-close svg {
-  width: 15px;
-  height: 15px;
+  width: 17px;
+  height: 17px;
 }
 
 .modal-body {
@@ -1273,30 +1298,6 @@ video {
   -webkit-overflow-scrolling: touch;
   /* extra bottom padding so content clears the frosted footer it scrolls under */
   padding: 44px 48px 92px;
-  /* a thin, translucent scrollbar that blends into the dialog (Firefox) */
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.16) transparent;
-}
-
-/* and the same subtle, inset scrollbar in WebKit/Blink */
-.modal-body::-webkit-scrollbar {
-  width: 10px;
-}
-
-.modal-body::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.modal-body::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.14);
-  border-radius: 8px;
-  border: 3px solid transparent;
-  background-clip: padding-box;
-}
-
-.modal-body::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(255, 255, 255, 0.26);
-  background-clip: padding-box;
 }
 
 /* cloned content reuses .project-* classes; modal-scoped sizing tweaks only */
