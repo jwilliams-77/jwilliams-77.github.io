@@ -41,7 +41,7 @@ Last updated: June 18, 2026
   - Close button reworked: permanent opaque accent ring (flush box-shadow, no offset gap so content never shows through, and it no longer vanishes on blur), shrunk to 26px with a 17px X, and nudged to `right: 22px` on desktop to clear the scrollbar gutter (mobile stays at 14px).
   - Modal sized with `dvh` (overlay height and dialog `max-height`, `vh` fallback) so it centers correctly on mobile when iOS Safari's toolbar is expanded at the top of the page (fixes the dialog opening cut off near the top).
   - Thin, translucent scrollbar promoted from the modal to a global site style (`html` + `::-webkit-scrollbar`).
-  - Performance: every `<img>`/`<video>` got explicit intrinsic `width`/`height` (real pixel dims) to remove layout shift; below-the-fold images `loading="lazy"`, all `decoding="async"`, hero/headshot eager with `fetchpriority="high"`.
+  - Performance: below-the-fold images `loading="lazy"`, all `decoding="async"`, hero/headshot eager with `fetchpriority="high"`. (Explicit intrinsic `width`/`height` attributes were briefly added for layout-shift reduction but then removed: they squished media on mobile, since the height attribute fought the responsive `max-width`/`height:auto` sizing.)
   - Fin Tabs: the "every subsystem in one model" caption moved to the hero (exploded) image, and `fin-tabs-2` left captionless (a correct caption is pending). Hero figures can carry a centered caption.
   - About page mobile headshot was briefly floated/moved, then reverted to the original stacked-below-copy layout per preference. Stylesheet at `styles.css?v=40`.
 

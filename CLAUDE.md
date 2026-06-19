@@ -108,8 +108,8 @@ The design is roughly 70% imagery. It looks gorgeous with great visuals and amat
 Provide all of these by placing the files in the repo folders on disk, then telling Claude Code where they are. They are read from disk, not uploaded through chat.
 
 **Loading performance**
-- Every `<img>` and `<video>` carries explicit intrinsic `width` and `height` (the real pixel dimensions, read from the asset) so the browser reserves the right space before media loads and the page does not shift (no CLS). CSS still controls display (`height: auto`, `object-fit`), so the attributes only set the aspect ratio; if an asset is replaced, refresh its width/height.
 - Below-the-fold images use `loading="lazy"`; all images use `decoding="async"`; the hero/headshot (LCP) images stay eager with `fetchpriority="high"`. Modal media lives in `<template>` blocks, so it is not fetched until a preview opens.
+- Do NOT add explicit `width`/`height` attributes to `<img>`/`<video>` for layout-shift reduction: it was tried and reverted because it rendered media squished on mobile (the height attribute fought the responsive `max-width` + `height:auto` sizing, breaking the aspect ratio when the width constraint binds on narrow screens).
 
 ### Scrollbars
 - The whole site uses a thin, translucent scrollbar (a `~4px` near-transparent thumb on a transparent track, brightening slightly on hover), set globally via `scrollbar-width`/`scrollbar-color` and `::-webkit-scrollbar`. On macOS this makes the scrollbar persistent (styled) rather than the auto-hiding overlay default, by design, for a clean consistent look.
