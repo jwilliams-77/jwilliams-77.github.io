@@ -1475,6 +1475,11 @@ body.modal-open {
     grid-template-columns: 1fr;
   }
 
+  /* show the headshot above the copy when the grid stacks on mobile */
+  .about .headshot {
+    order: -1;
+  }
+
   .modal-overlay {
     padding: 16px 12px;
   }
