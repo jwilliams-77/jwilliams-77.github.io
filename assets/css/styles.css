@@ -1261,17 +1261,20 @@ video {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
-  height: 30px;
+  width: 26px;
+  height: 26px;
   padding: 0;
   background: var(--bg);
   border: 0.5px solid var(--hairline);
   border-radius: 50%;
   color: var(--text-secondary);
   cursor: pointer;
-  transition: color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-  /* no translucent tap flash on iOS; the focus ring below is the opaque cue */
+  transition: color 0.2s ease, border-color 0.2s ease;
+  /* no translucent tap flash on iOS */
   -webkit-tap-highlight-color: transparent;
+  /* the accent ring is a permanent part of the button (flush, opaque box-shadow),
+     so it stays put instead of vanishing when focus moves off the button */
+  box-shadow: 0 0 0 2px var(--accent);
 }
 
 .modal-close:hover {
@@ -1279,11 +1282,9 @@ video {
   border-color: var(--accent);
 }
 
-/* opaque accent focus ring, drawn as a box-shadow flush against the button so it
-   has no transparent offset gap for page content to show through */
+/* the permanent ring above is the focus cue too, so drop the browser default */
 .modal-close:focus {
   outline: none;
-  box-shadow: 0 0 0 2px var(--accent);
 }
 
 .modal-close svg {
