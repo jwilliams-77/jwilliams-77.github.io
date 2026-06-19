@@ -43,7 +43,7 @@ joelwilliams.github.io/
 - One shared `styles.css` and one `main.js` across all pages for consistency.
 - Use semantic HTML and accessible markup (alt text on all images, buttons for interactive controls, aria attributes on the accordion).
 - Keep every page on the same nav and footer.
-- The stylesheet link on every page carries a cache-busting query (`styles.css?v=N`, currently `v=32`). Bump N whenever `styles.css` or `main.js` changes so browsers do not serve a stale copy.
+- The stylesheet link on every page carries a cache-busting query (`styles.css?v=N`, currently `v=40`). Bump N whenever `styles.css` or `main.js` changes so browsers do not serve a stale copy.
 
 ---
 
@@ -106,6 +106,13 @@ The design is roughly 70% imagery. It looks gorgeous with great visuals and amat
 - Example intent to hand Claude Code: "make the Focus Puck hero a looping muted video, `focus-puck-loop.mp4`, with `focus-puck-hero.jpg` as the poster."
 
 Provide all of these by placing the files in the repo folders on disk, then telling Claude Code where they are. They are read from disk, not uploaded through chat.
+
+**Loading performance**
+- Every `<img>` and `<video>` carries explicit intrinsic `width` and `height` (the real pixel dimensions, read from the asset) so the browser reserves the right space before media loads and the page does not shift (no CLS). CSS still controls display (`height: auto`, `object-fit`), so the attributes only set the aspect ratio; if an asset is replaced, refresh its width/height.
+- Below-the-fold images use `loading="lazy"`; all images use `decoding="async"`; the hero/headshot (LCP) images stay eager with `fetchpriority="high"`. Modal media lives in `<template>` blocks, so it is not fetched until a preview opens.
+
+### Scrollbars
+- The whole site uses a thin, translucent scrollbar (a `~4px` near-transparent thumb on a transparent track, brightening slightly on hover), set globally via `scrollbar-width`/`scrollbar-color` and `::-webkit-scrollbar`. On macOS this makes the scrollbar persistent (styled) rather than the auto-hiding overlay default, by design, for a clean consistent look.
 
 ### Responsive behavior
 - Hero is two columns on desktop (text left, headshot + links right) and stacks to one column on mobile (headshot below the name).
@@ -176,6 +183,8 @@ Motion is subtle, in the site's flat and precise spirit, and every effect is lay
 - Per-project content lives in a hidden `<template>` in `index.html` and is cloned into one shared modal shell by `main.js`. It reuses the project-page classes (category tag, title, one-line outcome, metadata, `Core Skills`, hero, sections, figures, captions) and favors real photos and the existing looping videos, with CAD secondary.
 - Sections are short and skimmable: `Overview`, then for the design-heavy projects a `Design intent` section, then `What I did` and `Outcome`. Copy is a truncated, recruiter-skim version of the full page, not verbatim.
 - The dialog is closed by a top-right close button, a click on the backdrop, or Escape; focus moves to the close button on open and returns to the originating tile on close; body scroll locks while the modal is open.
+- The close button is a small circle with a permanent opaque accent ring (a flush box-shadow, so it never shows page content through an offset gap and does not vanish when focus leaves it); it sits clear of the scrollbar gutter on desktop.
+- The overlay and dialog are sized with `dvh` (dynamic viewport units), so the modal centers correctly on mobile even when iOS Safari's toolbar is expanded at the top of the page (`vh` is kept as a fallback).
 - A pinned action bar at the bottom of the dialog holds the `Read More` link to the full project page. Its top edge is feathered frosted glass (the same blur and dim as the home peek), so content dissolves under it rather than ending on a hard line. The link is centered, bold, and carries a gently oscillating arrow, matching the `View Work` cue treatment.
 - All motion (frosted-backdrop fade-in, dialog entrance, in-dialog scroll-reveal, arrow oscillation) is gated behind `prefers-reduced-motion`.
 

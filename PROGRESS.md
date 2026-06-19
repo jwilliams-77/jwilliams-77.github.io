@@ -1,6 +1,6 @@
 # Progress
 
-Last updated: June 17, 2026
+Last updated: June 18, 2026
 
 ## Done
 
@@ -36,6 +36,14 @@ Last updated: June 17, 2026
 - Hero tagline shortened to "I design, prototype, and machine hardware from the desk to orbit." (synced to CLAUDE.md §7.1, og:description, and the meta description). Home tab title changed to "Joel Williams · Project Portfolio". Blue Origin accordion gets a small "In Progress" accent badge (new `.role-tag`) so the current internship does not read as completed. og.png regenerated to match the current Title Case homepage and new tagline. Stylesheet at `styles.css?v=23`.
 - Project preview modals (new middle layer between the tile hover teaser and the full page): clicking a work tile opens an in-page "mini project page" instead of navigating. Per-project content lives in hidden `<template>` blocks in `index.html`, cloned into one shared modal shell by `main.js`. A frosted backdrop fades in (constant blur, opacity-faded so it eases rather than snaps), the dialog rises in, and the cloned content reuses the `.reveal` scroll animation scoped to the dialog. A pinned action bar holds a bold, centered `Read More` link (oscillating arrow, `View Work` cue styling) to the full page; its top edge is feathered frosted glass so content dissolves under it. Tiles keep their `href` as a no-JS fallback; close button, backdrop click, and Escape all dismiss; focus and body-scroll are managed; all gated by `prefers-reduced-motion`. Each modal has truncated Overview / (Design intent, for the design-heavy projects) / What I did / Outcome copy, favoring real photos and the existing loop videos over CAD. Fin Tabs preview is render-only (no real media exists yet); its `fin-tabs-2` image is intentionally left captionless pending a corrected caption. Hero figures can now carry a centered caption. Each modal resets its scroll to the top on open (the reset has to run after the dialog is shown, not while hidden, or the browser restores the prior position). Stylesheet at `styles.css?v=32`.
 - Other small changes: mobile nudge for the "In Progress" badge so it clears the role text; Race Couch retagged "Controls and Electronics" (home tile and project-page metadata); Race Couch project page given section headings (The story / Driving it like a tank / What it taught me).
+- Modal + site polish and performance pass:
+  - Modal videos now autoplay on iOS: cloned `<template>` videos don't autoplay on their own, so `main.js` sets `muted` as a property and calls `play()` on open within the click gesture.
+  - Close button reworked: permanent opaque accent ring (flush box-shadow, no offset gap so content never shows through, and it no longer vanishes on blur), shrunk to 26px with a 17px X, and nudged to `right: 22px` on desktop to clear the scrollbar gutter (mobile stays at 14px).
+  - Modal sized with `dvh` (overlay height and dialog `max-height`, `vh` fallback) so it centers correctly on mobile when iOS Safari's toolbar is expanded at the top of the page (fixes the dialog opening cut off near the top).
+  - Thin, translucent scrollbar promoted from the modal to a global site style (`html` + `::-webkit-scrollbar`).
+  - Performance: every `<img>`/`<video>` got explicit intrinsic `width`/`height` (real pixel dims) to remove layout shift; below-the-fold images `loading="lazy"`, all `decoding="async"`, hero/headshot eager with `fetchpriority="high"`.
+  - Fin Tabs: the "every subsystem in one model" caption moved to the hero (exploded) image, and `fin-tabs-2` left captionless (a correct caption is pending). Hero figures can carry a centered caption.
+  - About page mobile headshot was briefly floated/moved, then reverted to the original stacked-below-copy layout per preference. Stylesheet at `styles.css?v=40`.
 
 ## Next
 
