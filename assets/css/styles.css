@@ -1204,6 +1204,10 @@ video {
 .modal-overlay {
   position: fixed;
   inset: 0;
+  /* size to the dynamic (currently visible) viewport so centering is correct even
+     when iOS Safari's toolbar is expanded at the top of the page; inset:0 is the
+     fallback for browsers without dvh */
+  height: 100dvh;
   z-index: 50;
   display: flex;
   align-items: center;
@@ -1239,6 +1243,7 @@ video {
   width: 100%;
   max-width: 860px;
   max-height: 92vh;
+  max-height: 92dvh;
   background: var(--bg);
   border: 0.5px solid var(--hairline-strong);
   border-radius: var(--radius-card);
@@ -1476,6 +1481,7 @@ body.modal-open {
 
   .modal-dialog {
     max-height: 92vh;
+    max-height: 92dvh;
   }
 
   .modal-body {
