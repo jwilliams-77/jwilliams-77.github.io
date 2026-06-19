@@ -834,6 +834,12 @@ video {
   align-items: start;
 }
 
+/* the headshot is first in the DOM (so it can float on mobile); on desktop keep
+   it in the right-hand column via order */
+.about .headshot {
+  order: 1;
+}
+
 .about-copy p {
   max-width: 44em;
   font-size: 15.5px;
@@ -1471,13 +1477,18 @@ body.modal-open {
     margin: 0 auto;
   }
 
+  /* float the headshot top-right and let the heading and first paragraph wrap
+     around it (flow-root contains the float so it cannot bleed into the next
+     section) */
   .about-grid {
-    grid-template-columns: 1fr;
+    display: flow-root;
   }
 
-  /* show the headshot above the copy when the grid stacks on mobile */
   .about .headshot {
-    order: -1;
+    float: right;
+    width: 140px;
+    height: 140px;
+    margin: 4px 0 16px 20px;
   }
 
   .modal-overlay {
