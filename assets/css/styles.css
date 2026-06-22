@@ -1337,10 +1337,13 @@ video {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 0;
+  /* extend a few px past the bottom (clipped by the dialog's overflow:hidden) so
+     the backdrop-filter fully covers the rounded bottom edge instead of dropping
+     out in a thin sub-pixel sliver; the extra px is added back to padding-bottom */
+  bottom: -4px;
   display: flex;
   justify-content: center;
-  padding: 40px 48px 16px;
+  padding: 40px 48px 20px;
   background: rgba(10, 12, 21, 0.6);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
@@ -1489,7 +1492,7 @@ body.modal-open {
   }
 
   .modal-footer {
-    padding: 34px 22px 14px;
+    padding: 34px 22px 18px;
   }
 
   /* no persistent scrollbar gutter on touch, so keep the close button in the corner */
